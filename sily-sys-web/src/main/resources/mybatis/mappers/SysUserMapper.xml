@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sily.dao.SysUserDao">
+    <!-- SysUser的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_SysUser_Map" type="com.sily.api.SysUser">
+        <id column="id" property="id" />
+        <result column="qq" property="qq" />
+        <result column="birthday" property="birthday" />
+        <result column="name_pinyin" property="namePinyin" />
+        <result column="address" property="address" />
+        <result column="create_time" property="createTime" />
+        <result column="user_name" property="userName" />
+        <result column="sex" property="sex" />
+        <result column="id_card" property="idCard" />
+        <result column="wei_xin" property="weiXin" />
+        <result column="remark" property="remark" />
+        <result column="avatar" property="avatar" />
+        <result column="staff_no" property="staffNo" />
+        <result column="create_by" property="createBy" />
+        <result column="password" property="password" />
+        <result column="update_time" property="updateTime" />
+        <result column="user_type" property="userType" />
+        <result column="phone" property="phone" />
+        <result column="enable" property="enable" />
+        <result column="position" property="position" />
+        <result column="dept_id" property="deptId" />
+        <result column="update_by" property="updateBy" />
+        <result column="account" property="account" />
+        <result column="email" property="email" />
+    </resultMap>
+
+    <!-- 数据库中表名为:sys_user的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="sys_user_Column">
+        sys_user.id as id
+        ,sys_user.qq as qq
+        ,sys_user.birthday as birthday
+        ,sys_user.name_pinyin as name_pinyin
+        ,sys_user.address as address
+        ,sys_user.create_time as create_time
+        ,sys_user.user_name as user_name
+        ,sys_user.sex as sex
+        ,sys_user.id_card as id_card
+        ,sys_user.wei_xin as wei_xin
+        ,sys_user.remark as remark
+        ,sys_user.avatar as avatar
+        ,sys_user.staff_no as staff_no
+        ,sys_user.create_by as create_by
+        ,sys_user.password as password
+        ,sys_user.update_time as update_time
+        ,sys_user.user_type as user_type
+        ,sys_user.phone as phone
+        ,sys_user.enable as enable
+        ,sys_user.position as position
+        ,sys_user.dept_id as dept_id
+        ,sys_user.update_by as update_by
+        ,sys_user.account as account
+        ,sys_user.email as email
+    </sql>
+
+    <!--获得类名为:SysUser对应的数据库表的数据总行数 -->
+    <select id="getSysUserRowCount" resultType="java.lang.Long">
+        select count(id) from sys_user
+    </select>
+    <!-- 获得类名为:SysUser对应数据库中表的数据集合 -->
+    <select id="selectSysUser" resultMap="result_SysUser_Map">
+        select 
+        <include refid="sys_user_Column" /> 
+        from sys_user
+    </select> 
+
+    <!-- 获得一个SysUser对象,以参数SysUser对象中不为空的属性作为条件进行查询-->
+    <select id="selectSysUserByObj" parameterType="com.sily.api.SysUser" resultMap="result_SysUser_Map">
+        select 
+            <include refid="sys_user_Column" /> 
+        from sys_user
+        <where>
+            <if test="email != null "> and sys_user.email = #{email}</if>
+            <if test="account != null "> and sys_user.account = #{account}</if>
+            <if test="updateBy != null "> and sys_user.update_by = #{updateBy}</if>
+            <if test="deptId != null "> and sys_user.dept_id = #{deptId}</if>
+            <if test="position != null "> and sys_user.position = #{position}</if>
+            <if test="enable != null "> and sys_user.enable = #{enable}</if>
+            <if test="phone != null "> and sys_user.phone = #{phone}</if>
+            <if test="userType != null "> and sys_user.user_type = #{userType}</if>
+            <if test="updateTime != null "> and sys_user.update_time = #{updateTime}</if>
+            <if test="password != null "> and sys_user.password = #{password}</if>
+            <if test="createBy != null "> and sys_user.create_by = #{createBy}</if>
+            <if test="staffNo != null "> and sys_user.staff_no = #{staffNo}</if>
+            <if test="avatar != null "> and sys_user.avatar = #{avatar}</if>
+            <if test="remark != null "> and sys_user.remark = #{remark}</if>
+            <if test="weiXin != null "> and sys_user.wei_xin = #{weiXin}</if>
+            <if test="idCard != null "> and sys_user.id_card = #{idCard}</if>
+            <if test="sex != null "> and sys_user.sex = #{sex}</if>
+            <if test="userName != null "> and sys_user.user_name = #{userName}</if>
+            <if test="createTime != null "> and sys_user.create_time = #{createTime}</if>
+            <if test="address != null "> and sys_user.address = #{address}</if>
+            <if test="namePinyin != null "> and sys_user.name_pinyin = #{namePinyin}</if>
+            <if test="birthday != null "> and sys_user.birthday = #{birthday}</if>
+            <if test="qq != null "> and sys_user.qq = #{qq}</if>
+            <if test="id != null "> and sys_user.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过SysUser的id获得对应数据库中表的数据对象-->
+    <select id="selectSysUserById" parameterType="java.lang.Long" resultMap="result_SysUser_Map">
+        select 
+            <include refid="sys_user_Column" /> 
+        from sys_user
+        where sys_user.id = #{id}
+    </select> 
+
+    <!-- 将SysUser插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertSysUser" parameterType="com.sily.api.SysUser">
+        insert into sys_user(id,qq,birthday,name_pinyin,address,create_time,user_name,sex,id_card,wei_xin,remark,avatar,staff_no,create_by,password,update_time,user_type,phone,enable,position,dept_id,update_by,account,email) 
+        values(#{id},#{qq},#{birthday},#{namePinyin},#{address},#{createTime},#{userName},#{sex},#{idCard},#{weiXin},#{remark},#{avatar},#{staffNo},#{createBy},#{password},#{updateTime},#{userType},#{phone},#{enable},#{position},#{deptId},#{updateBy},#{account},#{email})
+    </insert>
+
+    <!-- 将SysUser中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptySysUser" parameterType="com.sily.api.SysUser">
+        insert into sys_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="qq != null">qq,</if>
+            <if test="birthday != null">birthday,</if>
+            <if test="namePinyin != null">name_pinyin,</if>
+            <if test="address != null">address,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="userName != null">user_name,</if>
+            <if test="sex != null">sex,</if>
+            <if test="idCard != null">id_card,</if>
+            <if test="weiXin != null">wei_xin,</if>
+            <if test="remark != null">remark,</if>
+            <if test="avatar != null">avatar,</if>
+            <if test="staffNo != null">staff_no,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="password != null">password,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="userType != null">user_type,</if>
+            <if test="phone != null">phone,</if>
+            <if test="enable != null">enable,</if>
+            <if test="position != null">position,</if>
+            <if test="deptId != null">dept_id,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="account != null">account,</if>
+            <if test="email != null">email,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="qq != null"> #{qq},</if>
+            <if test="birthday != null"> #{birthday},</if>
+            <if test="namePinyin != null"> #{namePinyin},</if>
+            <if test="address != null"> #{address},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="userName != null"> #{userName},</if>
+            <if test="sex != null"> #{sex},</if>
+            <if test="idCard != null"> #{idCard},</if>
+            <if test="weiXin != null"> #{weiXin},</if>
+            <if test="remark != null"> #{remark},</if>
+            <if test="avatar != null"> #{avatar},</if>
+            <if test="staffNo != null"> #{staffNo},</if>
+            <if test="createBy != null"> #{createBy},</if>
+            <if test="password != null"> #{password},</if>
+            <if test="updateTime != null"> #{updateTime},</if>
+            <if test="userType != null"> #{userType},</if>
+            <if test="phone != null"> #{phone},</if>
+            <if test="enable != null"> #{enable},</if>
+            <if test="position != null"> #{position},</if>
+            <if test="deptId != null"> #{deptId},</if>
+            <if test="updateBy != null"> #{updateBy},</if>
+            <if test="account != null"> #{account},</if>
+            <if test="email != null"> #{email},</if>
+        </trim>
+    </insert>
+
+    <!-- 将SysUser批量插入到对应数据库的表中-->
+    <insert id="insertSysUserByBatch" parameterType="ArrayList">
+        insert into sys_user(id,qq,birthday,name_pinyin,address,create_time,user_name,sex,id_card,wei_xin,remark,avatar,staff_no,create_by,password,update_time,user_type,phone,enable,position,dept_id,update_by,account,email) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.qq},#{item.birthday},#{item.namePinyin},#{item.address},#{item.createTime},#{item.userName},#{item.sex},#{item.idCard},#{item.weiXin},#{item.remark},#{item.avatar},#{item.staffNo},#{item.createBy},#{item.password},#{item.updateTime},#{item.userType},#{item.phone},#{item.enable},#{item.position},#{item.deptId},#{item.updateBy},#{item.account},#{item.email})
+        </foreach>
+    </insert>
+
+    <!-- 通过SysUser的id将数据库表中对应的数据删除-->
+    <delete id="deleteSysUserById" parameterType="java.lang.Long">
+        delete from sys_user
+        where id = #{id}
+    </delete>
+
+    <!-- 通过SysUser的id将SysUser的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysUserById" parameterType="com.sily.api.SysUser">
+        update sys_user set
+            qq=#{qq}
+            ,birthday=#{birthday}
+            ,name_pinyin=#{namePinyin}
+            ,address=#{address}
+            ,create_time=#{createTime}
+            ,user_name=#{userName}
+            ,sex=#{sex}
+            ,id_card=#{idCard}
+            ,wei_xin=#{weiXin}
+            ,remark=#{remark}
+            ,avatar=#{avatar}
+            ,staff_no=#{staffNo}
+            ,create_by=#{createBy}
+            ,password=#{password}
+            ,update_time=#{updateTime}
+            ,user_type=#{userType}
+            ,phone=#{phone}
+            ,enable=#{enable}
+            ,position=#{position}
+            ,dept_id=#{deptId}
+            ,update_by=#{updateBy}
+            ,account=#{account}
+            ,email=#{email}
+        where id=#{id}
+    </update>
+
+    <!-- 通过SysUser的id将SysUser中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptySysUserById" parameterType="com.sily.api.SysUser">
+        update sys_user
+        <set>
+            <if test="qq != null">
+                qq=#{qq},
+            </if>
+            <if test="birthday != null">
+                birthday=#{birthday},
+            </if>
+            <if test="namePinyin != null">
+                name_pinyin=#{namePinyin},
+            </if>
+            <if test="address != null">
+                address=#{address},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="userName != null">
+                user_name=#{userName},
+            </if>
+            <if test="sex != null">
+                sex=#{sex},
+            </if>
+            <if test="idCard != null">
+                id_card=#{idCard},
+            </if>
+            <if test="weiXin != null">
+                wei_xin=#{weiXin},
+            </if>
+            <if test="remark != null">
+                remark=#{remark},
+            </if>
+            <if test="avatar != null">
+                avatar=#{avatar},
+            </if>
+            <if test="staffNo != null">
+                staff_no=#{staffNo},
+            </if>
+            <if test="createBy != null">
+                create_by=#{createBy},
+            </if>
+            <if test="password != null">
+                password=#{password},
+            </if>
+            <if test="updateTime != null">
+                update_time=#{updateTime},
+            </if>
+            <if test="userType != null">
+                user_type=#{userType},
+            </if>
+            <if test="phone != null">
+                phone=#{phone},
+            </if>
+            <if test="enable != null">
+                enable=#{enable},
+            </if>
+            <if test="position != null">
+                position=#{position},
+            </if>
+            <if test="deptId != null">
+                dept_id=#{deptId},
+            </if>
+            <if test="updateBy != null">
+                update_by=#{updateBy},
+            </if>
+            <if test="account != null">
+                account=#{account},
+            </if>
+            <if test="email != null">
+                email=#{email},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>
