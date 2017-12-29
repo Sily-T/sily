@@ -59,7 +59,7 @@
 
     <!--获得类名为:SysUser对应的数据库表的数据总行数 -->
     <select id="getSysUserRowCount" resultType="java.lang.Long">
-        select count(id) from sys_user
+        select count(*) from sys_user
     </select>
     <!-- 获得类名为:SysUser对应数据库中表的数据集合 -->
     <select id="selectSysUser" resultMap="result_SysUser_Map">
