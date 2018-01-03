@@ -13,16 +13,15 @@
     <mvc:annotation-driven/>
     <!-- 启用默认Servlet -->
     <mvc:default-servlet-handler/>
-    <!--此处修改2017年11月2日-->
-    <!--scan the package-->
-    <!--<context:component-scan base-package="com.instrantes.*"/>-->
+
     <!--扫描web相关的controller,security，service，Exception-->
+    <!--<context:component-scan base-package="com.sily"/>-->
+    <!--<context:component-scan base-package="com.sily.dao"/>-->
+
     <context:component-scan
             base-package = "
             com.sily.web,
-            com.sily.web.security,
             com.sily.service,
-            com.sily.api,
             com.sily.dao"
     />
     <!-- 激活组件扫描功能,扫描aop的相关组件组件 -->

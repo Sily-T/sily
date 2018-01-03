@@ -4,6 +4,7 @@ import com.sily.dao.SysDeptDao;
 import com.sily.api.SysDept;
 import com.sily.service.SysDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 @Service
 public class SysDeptServiceImpl implements SysDeptService{
