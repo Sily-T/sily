@@ -10,17 +10,34 @@
         http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd">
 
     <!-- 扩充了注解驱动，包括RequestMappingHandlerAdapter，并可以将请求参数绑定到控制器参数， -->
-    <mvc:annotation-driven/>
+    <!--2018年1月3日修改，取消单独的MappingJackson2HttpMessageConverter-->
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <!--  @since 4.3 -->
+                 <property name="defaultCharset" value="UTF-8"/>
+                <property name="supportedMediaTypes" value="text/html;charset=UTF-8"/>
+            </bean>
+            <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <!--  @since 4.3 -->
+                 <property name="defaultCharset" value="UTF-8"/>
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>application/json;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
     <!-- 启用默认Servlet -->
     <mvc:default-servlet-handler/>
 
     <!--扫描web相关的controller,security，service，Exception-->
-    <!--<context:component-scan base-package="com.sily"/>-->
-    <!--<context:component-scan base-package="com.sily.dao"/>-->
-
     <context:component-scan
             base-package = "
             com.sily.service,
+            com.sily.web.controller,
+            com.sily.web.security,
             com.sily.dao"
     />
     <!-- 激活组件扫描功能,扫描aop的相关组件组件 -->

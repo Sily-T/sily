@@ -14,10 +14,6 @@
         <param-value>classpath:log/log4j2.xml</param-value>
     </context-param>
 
-    <!--<listener>-->
-    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-    <!--</listener>-->
-
     <!-- log4j2 -->
     <listener>
         <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
