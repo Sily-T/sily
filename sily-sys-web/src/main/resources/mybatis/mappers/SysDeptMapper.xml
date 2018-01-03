@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sily.dao.SysDeptDao">
+    <!-- SysDept的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_SysDept_Map" type="com.sily.api.SysDept">
+        <id column="id" property="id" />
+        <result column="leaf_" property="leaf" />
+        <result column="create_by" property="createBy" />
+        <result column="sort_no" property="sortNo" />
+        <result column="remark_" property="remark" />
+        <result column="update_time" property="updateTime" />
+        <result column="enable_" property="enable" />
+        <result column="create_time" property="createTime" />
+        <result column="parent_id" property="parentId" />
+        <result column="dept_name" property="deptName" />
+        <result column="update_by" property="updateBy" />
+        <result column="unit_id" property="unitId" />
+    </resultMap>
+
+    <!-- 数据库中表名为:sys_dept的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="sys_dept_Column">
+        sys_dept.id as id
+        ,sys_dept.leaf_ as leaf_
+        ,sys_dept.create_by as create_by
+        ,sys_dept.sort_no as sort_no
+        ,sys_dept.remark_ as remark_
+        ,sys_dept.update_time as update_time
+        ,sys_dept.enable_ as enable_
+        ,sys_dept.create_time as create_time
+        ,sys_dept.parent_id as parent_id
+        ,sys_dept.dept_name as dept_name
+        ,sys_dept.update_by as update_by
+        ,sys_dept.unit_id as unit_id
+    </sql>
+
+    <!--获得类名为:SysDept对应的数据库表的数据总行数 -->
+    <select id="getSysDeptRowCount" resultType="java.lang.Long">
+        select count(id) from sys_dept
+    </select>
+    <!-- 获得类名为:SysDept对应数据库中表的数据集合 -->
+    <select id="selectSysDept" resultMap="result_SysDept_Map">
+        select 
+        <include refid="sys_dept_Column" /> 
+        from sys_dept
+    </select> 
+
+    <!-- 获得一个SysDept对象,以参数SysDept对象中不为空的属性作为条件进行查询-->
+    <select id="selectSysDeptByObj" parameterType="com.sily.api.SysDept" resultMap="result_SysDept_Map">
+        select 
+            <include refid="sys_dept_Column" /> 
+        from sys_dept
+        <where>
+            <if test="unitId != null "> and sys_dept.unit_id = #{unitId}</if>
+            <if test="updateBy != null "> and sys_dept.update_by = #{updateBy}</if>
+            <if test="deptName != null "> and sys_dept.dept_name = #{deptName}</if>
+            <if test="parentId != null "> and sys_dept.parent_id = #{parentId}</if>
+            <if test="createTime != null "> and sys_dept.create_time = #{createTime}</if>
+            <if test="enable != null "> and sys_dept.enable_ = #{enable}</if>
+            <if test="updateTime != null "> and sys_dept.update_time = #{updateTime}</if>
+            <if test="remark != null "> and sys_dept.remark_ = #{remark}</if>
+            <if test="sortNo != null "> and sys_dept.sort_no = #{sortNo}</if>
+            <if test="createBy != null "> and sys_dept.create_by = #{createBy}</if>
+            <if test="leaf != null "> and sys_dept.leaf_ = #{leaf}</if>
+            <if test="id != null "> and sys_dept.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过SysDept的id获得对应数据库中表的数据对象-->
+    <select id="selectSysDeptById" parameterType="java.lang.Long" resultMap="result_SysDept_Map">
+        select 
+            <include refid="sys_dept_Column" /> 
+        from sys_dept
+        where sys_dept.id = #{id}
+    </select> 
+
+    <!-- 将SysDept插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertSysDept" parameterType="com.sily.api.SysDept">
+        insert into sys_dept(id,leaf_,create_by,sort_no,remark_,update_time,enable_,create_time,parent_id,dept_name,update_by,unit_id) 
+        values(#{id},#{leaf},#{createBy},#{sortNo},#{remark},#{updateTime},#{enable},#{createTime},#{parentId},#{deptName},#{updateBy},#{unitId})
+    </insert>
+
+    <!-- 将SysDept中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptySysDept" parameterType="com.sily.api.SysDept">
+        insert into sys_dept
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="leaf != null">leaf_,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="sortNo != null">sort_no,</if>
+            <if test="remark != null">remark_,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="enable != null">enable_,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="parentId != null">parent_id,</if>
+            <if test="deptName != null">dept_name,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="unitId != null">unit_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="leaf != null"> #{leaf},</if>
+            <if test="createBy != null"> #{createBy},</if>
+            <if test="sortNo != null"> #{sortNo},</if>
+            <if test="remark != null"> #{remark},</if>
+            <if test="updateTime != null"> #{updateTime},</if>
+            <if test="enable != null"> #{enable},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="parentId != null"> #{parentId},</if>
+            <if test="deptName != null"> #{deptName},</if>
+            <if test="updateBy != null"> #{updateBy},</if>
+            <if test="unitId != null"> #{unitId},</if>
+        </trim>
+    </insert>
+
+    <!-- 将SysDept批量插入到对应数据库的表中-->
+    <insert id="insertSysDeptByBatch" parameterType="ArrayList">
+        insert into sys_dept(id,leaf_,create_by,sort_no,remark_,update_time,enable_,create_time,parent_id,dept_name,update_by,unit_id) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.leaf},#{item.createBy},#{item.sortNo},#{item.remark},#{item.updateTime},#{item.enable},#{item.createTime},#{item.parentId},#{item.deptName},#{item.updateBy},#{item.unitId})
+        </foreach>
+    </insert>
+
+    <!-- 通过SysDept的id将数据库表中对应的数据删除-->
+    <delete id="deleteSysDeptById" parameterType="java.lang.Long">
+        delete from sys_dept
+        where id = #{id}
+    </delete>
+
+    <!-- 通过SysDept的id将SysDept的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysDeptById" parameterType="com.sily.api.SysDept">
+        update sys_dept set
+            leaf_=#{leaf}
+            ,create_by=#{createBy}
+            ,sort_no=#{sortNo}
+            ,remark_=#{remark}
+            ,update_time=#{updateTime}
+            ,enable_=#{enable}
+            ,create_time=#{createTime}
+            ,parent_id=#{parentId}
+            ,dept_name=#{deptName}
+            ,update_by=#{updateBy}
+            ,unit_id=#{unitId}
+        where id=#{id}
+    </update>
+
+    <!-- 通过SysDept的id将SysDept中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptySysDeptById" parameterType="com.sily.api.SysDept">
+        update sys_dept
+        <set>
+            <if test="leaf != null">
+                leaf_=#{leaf},
+            </if>
+            <if test="createBy != null">
+                create_by=#{createBy},
+            </if>
+            <if test="sortNo != null">
+                sort_no=#{sortNo},
+            </if>
+            <if test="remark != null">
+                remark_=#{remark},
+            </if>
+            <if test="updateTime != null">
+                update_time=#{updateTime},
+            </if>
+            <if test="enable != null">
+                enable_=#{enable},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="parentId != null">
+                parent_id=#{parentId},
+            </if>
+            <if test="deptName != null">
+                dept_name=#{deptName},
+            </if>
+            <if test="updateBy != null">
+                update_by=#{updateBy},
+            </if>
+            <if test="unitId != null">
+                unit_id=#{unitId},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>

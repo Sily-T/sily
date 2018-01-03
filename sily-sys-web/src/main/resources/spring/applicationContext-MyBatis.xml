@@ -12,6 +12,6 @@
         <!-- 会话工厂 -->
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactoryBean" />
         <!-- 扫描包的路径 -->
-        <property name="basePackage" value="com.instrantes.dao" />
+        <property name="basePackage" value="com.sily.dao" />
     </bean>
 </beans>
