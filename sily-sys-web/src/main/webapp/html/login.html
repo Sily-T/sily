@@ -6,46 +6,41 @@
     <script src="../static/js/jquery-3.2.1.min.js"></script>
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/font/font-awesome-4.7.0/css/font-awesome.min.css">
+    <script src="../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
+    <script src="../static/js/login.js"></script>
     <link rel="stylesheet" href="../static/css/login.css">
 
 </head>
 <body>
-<div class="wrapper" ><br/>
-    <div class="container">
-        <div class="login">
-            <div class="login-screen">
-                <div class="login-icon">
-                    <img src="../static/img/logo.png" width="500px" title="欢迎来到Sily"/>
-                    <h4 style="color: wheat">
-                        欢迎来到
-                        <small>&nbsp;&nbsp;&nbsp;Sily</small>
-                    </h4>
-                </div>
-
-                <form class="login-form">
-                    <div class="form-group">
-                        <label class="login-field-icon fui-user" for="account"></label>
-                        <input type="text" class="form-control login-field" name="account" id="account"
-                               placeholder="输入账号" autofocus="autofocus" required/>
-                    </div>
-                    <div class="form-group">
-                        <label class="login-field-icon fui-lock" for="password"></label>
-                        <input type="password" class="form-control login-field" id="password"
-                               name="password" placeholder="输入密码" required/>
-                    </div>
-                    <button class="btn btn-primary btn-lg btn-block" id="btn-login" type="submit">登录</button>
-                    <a class="login-link" href="#">忘记密码?</a>
-                    <!--<div class="has-error center"><label class="control-label">{{msg}}</label></div>-->
-                </form>
+<div class="container" style="background-image: url('../static/img/loginbg.jpg')"><br/>
+    <div class="body-bg"></div>
+    <div class="login">
+        <div class="login-screen">
+            <div class="login-icon">
+                <img src="../static/img/logo.png" title="欢迎来到Sily" />
+                    <h4>
+                    欢迎来到 <small>&nbsp;&nbsp;&nbsp;Sily </small>
+                </h4>
             </div>
+
+            <form class="login-form" >
+                <div class="form-group">
+                    <label class="login-field-icon fui-user" for="account"></label>
+                    <input type="text" class="form-control login-field"name="account" id="account"
+                           placeholder="输入账号"  autofocus="autofocus" required />
+                </div>
+                <div class="form-group">
+                    <label class="login-field-icon fui-lock" for="password"></label>
+                    <input type="password" class="form-control login-field" id="password"
+                           name="password" placeholder="输入密码"  required />
+                </div>
+                <button class="btn btn-primary btn-lg btn-block" id="btn-login" type="submit">登录</button>
+                <a class="login-link" href="#">忘记密码?</a>
+                <!--<div class="has-error center"><label class="control-label">{{msg}}</label></div>-->
+            </form>
         </div>
     </div>
 </div>
 <!--<footer class="footer" data-ng-include=" 'src/tpl/footer.html' "></footer>-->
-
-
-<script src="../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-<script src="../static/js/login.js"></script>
 </body>
 </html>
