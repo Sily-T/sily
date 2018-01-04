@@ -19,7 +19,7 @@
     <!--暂时去掉，怕影响其他组件-->
     <!--<div class="row">-->
     <!--侧边导航栏-->
-    <nav class="col-md-2  navbar-default navbar-static-side ">
+    <nav class="col-md-2  navbar-default navbar-static-side " >
         <div class="sidebar-collapse">
             <ul class="nav metismenu" id="menu">
                 <!--头像等相关资料 -->
@@ -131,10 +131,7 @@
                 <!--此处暂时不用-->
                 <!--<div class="collapse navbar-collapse">-->
                 <ul class="nav navbar-nav navbar-right">
-                    <li >
-                        <span class="m-r-sm text-muted welcome-message"><a href="index.html" title="返回首页">
-                            <i class="fa fa-home"></i></a>欢迎使用Sily开发平台</span>
-                    </li>
+                    <li><a href="index.html" title="返回首页"><i class="fa fa-home"></i>欢迎使用Sily开发平台</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle count-info" data-toggle="dropdown" href="index.html#">
                             <i class="fa fa-envelope"></i> <span class="label label-warning">16</span>
@@ -147,7 +144,7 @@
                                     </a>
                                     <div class="media-body">
                                         <small class="pull-right">46小时前</small>
-                                        <strong>小四</strong> 项目已处理完结
+                                        <strong>Amy</strong> 项目已处理完结
                                         <br>
                                         <small class="text-muted">3天前 2014.11.8</small>
                                     </div>
@@ -157,11 +154,11 @@
                             <li>
                                 <div class="dropdown-messages-box">
                                     <a href="profile.html" class="pull-left">
-                                        <img alt="image" class="img-circle" src="img/a4.jpg">
+                                        <img alt="image" class="img-circle" src="../static/img/girl2.jpg">
                                     </a>
                                     <div class="media-body ">
                                         <small class="pull-right text-navy">25小时前</small>
-                                        <strong>国民岳父</strong> 这是一条测试信息
+                                        <strong>John</strong> 这是一条测试信息
                                         <br>
                                         <small class="text-muted">昨天</small>
                                     </div>
@@ -180,57 +177,94 @@
                 </ul>
                 <!--</div>-->
             </nav>
-
-            <nav class="navbar navbar-default">
-                    <div class="navbar-header">
-                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                            <span class="sr-only">Toggle navigation</span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                            <span class="icon-bar"></span>
-                        </button>
-                        <a class="navbar-brand" href="#">Brand</a>
+        </div>
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h2>Sily 开发文档</h2>
                     </div>
+                    <div class="ibox-content">
+                        <p>Sily的v0.3开发文档，如下图所示：</p>
+                        <p>
+                            <h3>此处是二维码</h3>
+                        </p>
+                        <p>开发文档位于项目中的docs目录下。</p>
+                    </div>
+                </div>
 
-                    <!-- Collect the nav links, forms, and other content for toggling -->
-                    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                        <ul class="nav navbar-nav">
-                            <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">One more separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <form class="navbar-form navbar-left">
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Search">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>二次开发</h5>
+                    </div>
+                    <div class="ibox-content">
+                        <p>我们提供基于Sily的二次开发服务，请联系作者。</p>
+                        <ol>
+                            <li>Html页面（CSS+HTML+jQuery）制作</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h2>更新日志</h2>
+                    </div>
+                    <div class="ibox-content no-padding">
+
+                        <div class="panel-body">
+                            <div class="panel-group" id="version">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#version" href="index.html#v22">v0.3</a><code class="pull-right">2018年1月4日更新</code>
+                                        </h5>
+                                    </div>
+                                    <div id="v22" class="panel-collapse collapse in">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>修复一些问题；</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#version" href="#">v0.2</a>
+                                        </h5>
+                                    </div>
+                                    <div id="v2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>修复一些问题；</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h5 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#version" href="#">v0.1</a>
+                                        </h5>
+                                    </div>
+                                    <div id="v1" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ol>
+                                                <li>修复一些问题；</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
-                            <button type="submit" class="btn btn-default">Submit</button>
-                        </form>
-                        <ul class="nav navbar-nav navbar-right">
-                            <li><a href="#">Link</a></li>
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Action</a></li>
-                                    <li><a href="#">Another action</a></li>
-                                    <li><a href="#">Something else here</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="#">Separated link</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div><!-- /.navbar-collapse -->
-            </nav>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
         </div>
         <!--</div>-->
     </div>

@@ -1,4 +1,5 @@
 /*header*/
+/*导航栏距离*/
 .navbar-header i{
     padding-left: 1.5em;
     padding-right: 2em;
@@ -13,6 +14,11 @@
 .panel-default{
     margin-top: 20px;
 }
+/*导航栏颜色*/
+.navbar-default .navbar-nav > li > a {
+    color: #fff;
+}
+/*头像大小*/
 .head-img{
     display: inline-block;
     border: solid 1px rgba(255, 255, 255, .1);
