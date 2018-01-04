@@ -1,4 +1,4 @@
-package com.sily.controller;
+package com.sily.web.controller;
 
 import com.sily.api.SysUser;
 import com.sily.service.SysUserLoginService;
@@ -22,10 +22,15 @@ public class SysUserController {
     @Autowired
     private SysUserLoginService sysUserLoginService;
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public void test() throws Exception {
+        System.out.println("test");
+    }
     /**
      * 用户登录
      */
-    @RequestMapping(value = "/login", method = RequestMethod.GET)
+
+    @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String checkLogin(@RequestBody SysUser sysUser, Model model) throws Exception {
         /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
         sysUser = sysUserLoginService.checkLogin("admin","admin");
