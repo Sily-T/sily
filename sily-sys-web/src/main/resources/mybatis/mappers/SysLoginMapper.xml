@@ -2,6 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sily.dao.SysLoginDao">
     <select id="selectByLoginName" parameterType="String" resultType="com.sily.api.SysUser">
-        SELECT sys_user.* FROM sys_user WHERE sys_user.account='#{SysUser.account}'
+        SELECT * FROM sys_user WHERE sys_user.account= #{account}
     </select>
 </mapper>

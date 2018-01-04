@@ -1,5 +1,4 @@
 $(document).ready(function(){
-    console.log("sdf");
     $('#btn-login').click( function login() {
         var account = $('#account').val();
         var password = $('#password').val();
@@ -13,12 +12,12 @@ $(document).ready(function(){
             alert("密码不能为空！");
             return;
         }
-        console.log("come in");
+        console.log("ss");
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=utf-8',
             async: false,
-            url: "${pageContext.request.contextPath}/sily/user/login.action",
+            url: "${pageContext.request.contextPath}/user/login.action",
             data: JSON.stringify(sysUser),
             success: function (result) {
                     window.location.href = "index.html";

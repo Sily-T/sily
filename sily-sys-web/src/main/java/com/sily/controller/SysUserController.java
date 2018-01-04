@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.*;
  * @Modified By:
  **/
 @Controller
-@RequestMapping("user")
+@RequestMapping("/user")
 @SessionAttributes("sysUser")
 public class SysUserController {
 
@@ -25,10 +25,10 @@ public class SysUserController {
     /**
      * 用户登录
      */
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    @ResponseBody
+    @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String checkLogin(@RequestBody SysUser sysUser, Model model) throws Exception {
-        sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());
+        /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
+        sysUser = sysUserLoginService.checkLogin("admin","admin");
         if (sysUser != null){
             model.addAttribute("sysUser",sysUser);
             return "html/index.html";

@@ -36,7 +36,7 @@
     <context:component-scan
             base-package = "
             com.sily.service,
-            com.sily.web.controller,
+            com.sily.web.security,
             com.sily.web.security,
             com.sily.dao"
     />
