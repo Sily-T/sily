@@ -5,10 +5,8 @@ import com.sily.service.SysUserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
+
 /**
  * @Author:
  * @Version: V 1.0
@@ -29,7 +27,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
-    public String checkLogin(SysUser sysUser, Model model) throws Exception {
+    public String checkLogin(@RequestBody SysUser sysUser, Model model) throws Exception {
         sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());
         if (sysUser != null){
             model.addAttribute("sysUser",sysUser);
