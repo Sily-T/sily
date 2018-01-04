@@ -33,6 +33,7 @@ public class SysUserController {
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public String checkLogin(@RequestBody SysUser sysUser, Model model) throws Exception {
         /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
+        System.out.println();
         sysUser = sysUserLoginService.checkLogin("admin","admin");
         if (sysUser != null){
             model.addAttribute("sysUser",sysUser);

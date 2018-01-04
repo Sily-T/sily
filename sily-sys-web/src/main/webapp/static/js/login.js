@@ -16,11 +16,10 @@ $(document).ready(function(){
         $.ajax({
             type: "POST",
             contentType: 'application/json;charset=utf-8',
-            async: false,
-            url: "${pageContext.request.contextPath}/user/login.action",
+            url: "/user/login",
             data: JSON.stringify(sysUser),
             success: function (result) {
-                    window.location.href = "index.html";
+                    console.log("success");
             },
             error: function () {
                 alert("异常！");
