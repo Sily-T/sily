@@ -31,6 +31,7 @@ public class SysUserController {
      */
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
+    @ResponseBody
     public SysUser checkLogin(@RequestBody SysUser sysUser) throws Exception {
         /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
         System.out.println("success");

@@ -12,14 +12,16 @@ $(document).ready(function(){
             alert("密码不能为空！");
             return;
         }
-        console.log("ss");
+        console.log(JSON.stringify(sysUser));
         $.ajax({
             type: "POST",
             contentType: "application/json;charset=utf-8",
             url: "/user/login",
+            async:false,
             data: JSON.stringify(sysUser),
             success: function (result) {
                     console.log(result);
+                    window.location.href = "../html/index.html";
             },
             error: function (result) {
                 alert(result);
