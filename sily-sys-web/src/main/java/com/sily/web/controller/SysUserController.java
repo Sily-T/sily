@@ -31,15 +31,12 @@ public class SysUserController {
      */
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String checkLogin(@RequestBody SysUser sysUser, Model model) throws Exception {
+    public SysUser checkLogin(@RequestBody SysUser sysUser) throws Exception {
         /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
-        System.out.println();
+        System.out.println("success");
         sysUser = sysUserLoginService.checkLogin("admin","admin");
-        if (sysUser != null){
-            model.addAttribute("sysUser",sysUser);
-            return "html/index.html";
-        }
-        return "html/login.html";
+        System.out.println(sysUser.getAccount());
+            return sysUser;
     }
 
     /**

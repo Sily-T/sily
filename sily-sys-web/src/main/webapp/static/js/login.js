@@ -15,14 +15,14 @@ $(document).ready(function(){
         console.log("ss");
         $.ajax({
             type: "POST",
-            contentType: 'application/json;charset=utf-8',
+            contentType: "application/json;charset=utf-8",
             url: "/user/login",
             data: JSON.stringify(sysUser),
             success: function (result) {
-                    console.log("success");
+                    console.log(result);
             },
-            error: function () {
-                alert("异常！");
+            error: function (result) {
+                alert(result);
             }
         })
     })
