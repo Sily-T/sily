@@ -1,5 +1,7 @@
 $(document).ready(function(){
-    $('#btn-login').click( function login() {
+    // console.log("aaaaa");
+    $('#btn-login').click( function () {
+        // console.log("sssssss");
         var account = $('#account').val();
         var password = $('#password').val();
         var sysUser = {"account":account, "password":password};
@@ -17,13 +19,15 @@ $(document).ready(function(){
             type: "POST",
             contentType: "application/json;charset=utf-8",
             url: "/user/login",
-            async:false,
+            async:true,
             data: JSON.stringify(sysUser),
             success: function (result) {
-                    console.log(result);
+                console.log("success");
+                    console.log(result.account);
                     window.location.href = "/html/index.html";
             },
             error: function (result) {
+                console.log("fail");
                 alert(result);
             }
         })
