@@ -11,15 +11,17 @@ $().ready(function () {
         async: true,
         success: function (result) {
             var userEnable = "启用";
-            for (var i = 0; i++; i < result.length) {
+            for (var i = 0;  i < result.length;i++) {
+                console.log("come in1");
                 //因为多次使用userid，先建变量
                 var userID = result[i].id;
                 //将userEnable的值转变为文字
                 if (result[i].enable == 0) {
                     userEnable = "禁用";
                 }
+                console.log("come in");
                 userEnable = "启用";
-                $tableFirstTr.append("<tr></tr><td>" + result[i].id + "</td><td>" + result[i].account + "</td><td>" + result[i].userType + "</td><td>" + result[i].userName + "</td><td>" + result[i].sex + "</td><td>" + result[i].phone + "</td><td>" + result[i].email + "</td><td>result[i].enable</td> <td>\n" +
+                $tableFirstTr.append("<tr></tr><td>" + result[i].id + "</td><td>" + result[i].account + "</td><td>" + result[i].userType + "</td><td>" + result[i].userName + "</td><td>" + result[i].sex + "</td><td>" + result[i].phone + "</td><td>" + result[i].email + "</td><td>"+userEnable+"</td> <td>\n" +
                     "                        <a href='singleuser.html?" + userID + "'>\n" +
                     "                            <button class='btn btn-info'>查看</button>\n" +
                     "                        </a>\n" +
