@@ -191,8 +191,12 @@
                             <input type="text" class="form-control" id="user-name" placeholder="请输入用户名">
                         </div>
                         <div class="form-group">
-                            <label for="sex">性别:</label>
-                            <input type="email" class="form-control" id="sex" placeholder="请输入邮箱">
+                            <label for="user-name">用户名拼音:</label>
+                            <input type="text" class="form-control" id="name-pinyin" placeholder="请输入用户名拼音">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">电话:</label>
+                            <input type="tel" class="form-control" id="phone" placeholder="请输入电话">
                         </div>
                         <div class="form-group">
                             <label for="email">邮箱:</label>
@@ -204,27 +208,26 @@
                         </div>
                         <div class="form-group">
                             <label for="address">详细地址:</label>
-                            <input type="text" class="form-control" id="address" placeholder="请输入身份证号">
+                            <input type="text" class="form-control" id="address" placeholder="请输入详细地址">
                         </div>
-
-
-                        <!--<div class="btn-group">-->
-                        <!--<button type="button" class="btn btn-default dropdown-toggle btn-sm" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">-->
-                        <!--状态<i class="fa fa-angle-down"></i>-->
-                        <!--</button>-->
-                        <!--<ul class="dropdown-menu" style="width: 30px;">-->
-                        <!--<li><a href="#">启用</a></li>-->
-                        <!--<li><a href="#">禁用</a></li>-->
-                        <!--</ul>-->
-                        <!--</div>-->
-                        <!--<div class="btn-group btn-group-lg"  aria-label="...">-->
-                        <!--<button type="button" class="btn btn-primary">启用</button>-->
-                        <!--<button type="button" class="btn btn-danger">禁用</button>-->
-                        <!--</div>-->
                         <div class="form-group">
                             <label style="margin-right: 20px">性别:</label>
                             <input type="radio" name="sex" value="f" data-icon=''/>
                             <input type="radio" name="sex" value="m" data-icon=''/>
+                        </div>
+                        <div class="form-group">
+                            <label for="birthday">出生日期:</label>
+                            <input type="date" class="form-control" id="birthday" placeholder="请输入用户名">
+                        </div>
+                        <div class="form-group">
+                            <label for="dept-id">部门编号:</label>
+                            <input type="text" class="form-control" id="dept-id" placeholder="部门编号">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control">
+                                <option class="list-group-item-info">启用</option>
+                                <option class="list-group-item-danger">禁用</option>
+                            </select>
                         </div>
                         <div>
                             <button class="btn btn-default">返回</button>

@@ -12,7 +12,6 @@
     <link rel="stylesheet" href="../static/css/style.css">
 
 
-
 </head>
 <body>
 <!--主体部分-->
@@ -186,20 +185,64 @@
         </div>
         <div class="row">
             <!--<div class="col-lg-5">-->
-                <table id="user-list" class="table table-bordered table-hover text-center">
-                    <tr class="info ">
-                        <td>序号</td><td>账户</td><td>账户类型</td><td>姓名</td><td>性别</td><td>手机</td><td>邮箱</td><td>是否启用</td>
-                    </tr>
-                    <tr>
-                        <td>1</td><td>Amy</td><td>1</td><td>Amy</td><td>女</td><td>136xxxxxxxx</td><td>amy@qq.com</td><td>是</td>
-                    </tr>
-                    <tr>
-                        <td>2</td><td>Bmy</td><td>1</td><td>Bmy</td><td>女</td><td>136xxxxxxxx</td><td>amy@qq.com</td><td>是</td>
-                    </tr>
-                    <tr>
-                        <td>3</td><td>Smy</td><td>1</td><td>Smy</td><td>女</td><td>136xxxxxxxx</td><td>amy@qq.com</td><td>是</td>
-                    </tr>
-                </table>
+            <table id="user-list" class="table table-bordered table-hover text-center">
+                <tr class="info ">
+                    <td><strong>序号</strong></td>
+                    <td><strong>账户</strong></td>
+                    <td><strong>账户类型</strong></td>
+                    <td><strong>姓名</strong></td>
+                    <td><strong>性别</strong></td>
+                    <td><strong>手机</strong></td>
+                    <td><strong>邮箱</strong></td>
+                    <td><strong>状态</strong></td>
+                    <td colspan="3"><strong>操作</strong></td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Amy</td>
+                    <td>1</td>
+                    <td>Amy</td>
+                    <td>女</td>
+                    <td>136xxxxxxxx</td>
+                    <td>amy@qq.com</td>
+                    <td>启用</td>
+                    <td>
+                        <a href="singleuser.html">
+                            <button class="btn btn-info">查看</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="singleuser.html">
+                            <button class="btn btn-warning">编辑</button>
+                        </a>
+                    </td>
+                    <td>
+                        <a href="singleuser.html">
+                            <button class="btn btn-danger">删除</button>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Bmy</td>
+                    <td>1</td>
+                    <td>Bmy</td>
+                    <td>女</td>
+                    <td>136xxxxxxxx</td>
+                    <td>amy@qq.com</td>
+                    <td>启用</td>
+                    <td>
+                        <button class="btn btn-info">查看</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-warning">编辑</button>
+                    </td>
+                    <td>
+                        <button class="btn btn-danger">删除</button>
+                    </td>
+                </tr>
+
+            </table>
             <!--</div>-->
         </div>
         <!--</div>-->
