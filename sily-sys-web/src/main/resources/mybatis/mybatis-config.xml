@@ -37,7 +37,7 @@
         <setting name="aggressiveLazyLoading" value="true"/>
     </settings>
     <typeAliases>
-        <package name="com.instrantes.pojo"/>
+        <package name="com.sily.api"/>
     </typeAliases>
 
 </configuration>

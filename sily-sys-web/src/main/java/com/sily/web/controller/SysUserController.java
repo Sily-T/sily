@@ -38,7 +38,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public String userRegister(@RequestBody SysUser sysUser) {
+    public String userRegister(@RequestBody SysUser sysUser) throws Exception{
             return String.valueOf(sysUserLoginService.registerSysUser(sysUser));
     }
 
