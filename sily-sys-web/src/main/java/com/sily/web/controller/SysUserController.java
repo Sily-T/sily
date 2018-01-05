@@ -22,22 +22,13 @@ public class SysUserController {
     @Autowired
     private SysUserLoginService sysUserLoginService;
 
-    @RequestMapping(value = "/test", method = RequestMethod.GET)
-    public void test() throws Exception {
-        System.out.println("test");
-    }
     /**
      * 用户登录
      */
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     @ResponseBody
     public SysUser checkLogin(@RequestBody SysUser sysUser) throws Exception {
-        /*sysUser = sysUserLoginService.checkLogin(sysUser.getAccount(),sysUser.getPassword());*/
-        System.out.println("success");
-        sysUser = sysUserLoginService.checkLogin("admin","admin");
-        System.out.println(sysUser.getAccount());
-            return sysUser;
+        return sysUserLoginService.checkLogin(sysUser);
     }
 
     /**
@@ -45,8 +36,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public String userRegister(SysUser sysUser,Model model)throws Exception{
-        sysUserLoginService.registerSysUser(sysUser);
-        return "html/login.html";
+    public Integer userRegister(SysUser sysUser,Model model)throws Exception{
+        return sysUserLoginService.registerSysUser(sysUser);
     }
 }

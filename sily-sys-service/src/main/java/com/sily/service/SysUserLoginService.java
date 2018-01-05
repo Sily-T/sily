@@ -11,7 +11,13 @@ import com.sily.api.SysUser;
  **/
 public interface SysUserLoginService {
 
-    SysUser checkLogin(String account, String password)throws Exception;
+    /**
+     * 用户登录
+     */
+    SysUser checkLogin(SysUser sysUser)throws Exception;
 
-    void registerSysUser(SysUser sysUser)throws Exception;
+    /**
+     * 用户注册
+     */
+    Integer registerSysUser(SysUser sysUser)throws Exception;
 }

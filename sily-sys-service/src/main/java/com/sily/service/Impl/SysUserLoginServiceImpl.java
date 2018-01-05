@@ -22,17 +22,43 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
     @Autowired
     private SysUserDao sysUserDao;
 
+    /**
+     * 用户登录
+     */
     @Override
-    public SysUser checkLogin(String account, String password) throws Exception {
-        SysUser sysUser = sysLoginDao.selectByLoginName(account);
-        if (sysUser != null && sysUser.getPassword().equals(password)){
-            return sysUser;
+    public SysUser checkLogin(SysUser sysUser) throws Exception {
+        SysUser sysLoginUser = sysLoginDao.selectByLoginName(sysUser.getAccount());
+        if (sysLoginUser != null && sysLoginUser.getPassword().equals(sysUser.getPassword())){
+            return sysLoginUser;
         }
         return null;
     }
 
+    /**
+     * 用户注册
+     */
     @Override
-    public void registerSysUser(SysUser sysUser) throws Exception {
-        sysUserDao.insertSysUser(sysUser);
+    public Integer registerSysUser(SysUser sysUser) throws Exception {
+        Integer integer = sysLoginDao.insertLoginSysUser(sysUser.getAccount(),sysUser.getPassword());
+        if (integer == 1){
+            return integer;
+        }
+        return 0;
     }
+
+    /**
+     * 新增用户
+     */
+
+    /**
+     * 根据id查询用户
+     */
+
+    /**
+     * 根据id删除用户
+     */
+
+    /**
+     * 根据id修改用户
+     */
 }
