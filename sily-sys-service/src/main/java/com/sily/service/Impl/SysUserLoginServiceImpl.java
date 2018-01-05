@@ -7,6 +7,8 @@ import com.sily.service.SysUserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Author:
  * @Version: V 1.0
@@ -40,10 +42,16 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
     @Override
     public Integer registerSysUser(SysUser sysUser) throws Exception {
         Integer integer = sysLoginDao.insertLoginSysUser(sysUser.getAccount(),sysUser.getPassword());
-        if (integer == 1){
+        if (integer.equals(1)){
             return integer;
         }
         return 0;
+    }
+
+    @Override
+    public List<SysUser> selectSysUser() throws Exception {
+        List<SysUser> list = sysUserDao.selectSysUser();
+        return list;
     }
 
     /**

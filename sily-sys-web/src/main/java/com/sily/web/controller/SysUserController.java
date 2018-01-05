@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * @Author:
  * @Version: V 1.0
@@ -36,7 +38,23 @@ public class SysUserController {
      */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
-    public Integer userRegister(SysUser sysUser,Model model)throws Exception{
-        return sysUserLoginService.registerSysUser(sysUser);
+    public String userRegister(@RequestBody SysUser sysUser) {
+        try {
+            System.out.println(sysUserLoginService.registerSysUser(sysUser));
+            return String.valueOf(sysUserLoginService.registerSysUser(sysUser));
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            e.getStackTrace();
+        }
+        return "1";
+    }
+
+    /**
+     * 查询所有用户
+     */
+    @RequestMapping(value = "/alluser", method = RequestMethod.POST)
+    @ResponseBody
+    public List<SysUser> selectSysUser() throws Exception {
+        return sysUserLoginService.selectSysUser();
     }
 }

@@ -2,6 +2,8 @@ package com.sily.service;
 
 import com.sily.api.SysUser;
 
+import java.util.List;
+
 /**
  * @Author:
  * @Version: V 1.0
@@ -20,6 +22,11 @@ public interface SysUserLoginService {
      * 用户注册
      */
     Integer registerSysUser(SysUser sysUser)throws Exception;
+
+    /**
+     * 查询所有用户
+     */
+    List<SysUser> selectSysUser()throws Exception;
 
     /**
      * 新增用户

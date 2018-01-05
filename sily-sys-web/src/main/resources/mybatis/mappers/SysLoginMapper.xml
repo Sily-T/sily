@@ -5,7 +5,7 @@
         SELECT * FROM sys_user WHERE sys_user.account= #{account}
     </select>
 
-    <insert id="insertLoginSysUser" parameterType="com.sily.api.SysUser">
-        INSERT INTO sys_user(sys_user.account,sys_user.password) VALUES(#{user},#{user});
+    <insert id="insertLoginSysUser" >
+        INSERT INTO sys_user(sys_user.account,sys_user.password) VALUES(#{account},#{password});
     </insert>
 </mapper>

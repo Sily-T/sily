@@ -7,16 +7,15 @@ $().ready(function () {
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
-        url: "",
+        url: "/user/alluser",
         async: true,
-        data: JSON.stringify(),
         success: function (result) {
             for (var i = 0; i++; i < result.length) {
-                $tableFirstTr.append("<td>序号</td><td>账户</td><td>账户类型</td><td>姓名</td><td>性别</td><td>手机</td><td>邮箱</td><td>是否启用</td>");
+                $tableFirstTr.append("<td>"+result[i].id+"</td><td>"+result[i].account+"</td><td>"+result[i].userType+"</td><td>"+result[i].userName+"</td><td>"+result[i].sex+"</td><td>"+result[i].phone+"</td><td>"+result[i].email+"</td><td>是否启用</td>");
             }
         },
         error: function (result) {
             console.log("fail");
         }
     })
-})
+});

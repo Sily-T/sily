@@ -1,7 +1,5 @@
 $(document).ready(function(){
-    // console.log("aaaaa");
     $('#btn-login').click( function () {
-        // console.log("sssssss");
         var account = $('#account').val();
         var password = $('#password').val();
         var sysUser = {"account":account, "password":password};

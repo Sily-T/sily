@@ -1,6 +1,7 @@
 package com.sily.dao;
 
 import com.sily.api.SysUser;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -19,5 +20,5 @@ public interface SysLoginDao {
      */
     SysUser selectByLoginName(String account)throws Exception;
 
-    Integer insertLoginSysUser(String account,String password)throws Exception;
+    Integer insertLoginSysUser(@Param("account") String account,@Param("password") String password)throws Exception;
 }
