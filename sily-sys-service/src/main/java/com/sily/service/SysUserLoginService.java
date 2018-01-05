@@ -20,4 +20,24 @@ public interface SysUserLoginService {
      * 用户注册
      */
     Integer registerSysUser(SysUser sysUser)throws Exception;
+
+    /**
+     * 新增用户
+     */
+    Integer insertSysUser(SysUser sysUser)throws Exception;
+
+    /**
+     * 根据id查询用户
+     */
+    SysUser selectSysUserById(SysUser sysUser)throws Exception;
+
+    /**
+     * 根据id删除用户
+     */
+    Integer deleteSysUserById(SysUser sysUser)throws Exception;
+
+    /**
+     * 根据id修改用户
+     */
+    Integer updateSysUserById(SysUser sysUser)throws Exception;
 }

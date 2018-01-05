@@ -49,16 +49,32 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
     /**
      * 新增用户
      */
+    @Override
+    public Integer insertSysUser(SysUser sysUser) throws Exception {
+        return null;
+    }
 
     /**
      * 根据id查询用户
      */
+    @Override
+    public SysUser selectSysUserById(SysUser sysUser) throws Exception {
+        return null;
+    }
 
     /**
      * 根据id删除用户
      */
+    @Override
+    public Integer deleteSysUserById(SysUser sysUser) throws Exception {
+        return null;
+    }
 
     /**
      * 根据id修改用户
      */
+    @Override
+    public Integer updateSysUserById(SysUser sysUser) throws Exception {
+        return null;
+    }
 }
