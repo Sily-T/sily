@@ -1,6 +1,6 @@
 
 .wrapper {
-    height: 900px;
+    height: 950px;
     background-image: url('../img/loginbg.jpg');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -11,7 +11,7 @@
 /*login div大小*/
 .login{
     margin: auto;
-    width: 50%;
+    width: 35%;
 }
 .login-icon {
     /*width: 300px;*/

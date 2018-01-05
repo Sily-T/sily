@@ -23,17 +23,17 @@ $().ready(function () {
                 userEnable = "启用";
                 $tableFirstTr.append("<tr></tr><td>" + result[i].id + "</td><td>" + result[i].account + "</td><td>" + result[i].userType + "</td><td>" + result[i].userName + "</td><td>" + result[i].sex + "</td><td>" + result[i].phone + "</td><td>" + result[i].email + "</td><td>"+userEnable+"</td> <td>\n" +
                     "                        <a href='singleuser.html?" + userID + "'>\n" +
-                    "                            <button class='btn btn-info'>查看</button>\n" +
+                    "                            <button class='btn btn-info btn-block'>查看</button>\n" +
                     "                        </a>\n" +
                     "                    </td>\n" +
                     "                    <td>\n" +
                     "                        <a href='singleuser.html?" + userID + "'>\n" +
-                    "                            <button class='btn btn-warning'>编辑</button>\n" +
+                    "                            <button class='btn btn-warning btn-block'>编辑</button>\n" +
                     "                        </a>\n" +
                     "                    </td>\n" +
                     "                    <td>\n" +
                     "                        <a href='singleuser.html?" + userID + "'>\n" +
-                    "                            <button class='btn btn-danger'>删除</button>\n" +
+                    "                            <button class='btn btn-danger btn-block'>删除</button>\n" +
                     "                        </a>\n" +
                     "                    </td></tr>");
             }
