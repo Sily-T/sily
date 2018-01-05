@@ -40,8 +40,8 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
      * 用户注册
      */
     @Override
-    public Integer registerSysUser(SysUser sysUser) {
-        Integer integer = sysLoginDao.insertLoginSysUser(sysUser.getAccount(),sysUser.getPassword());
+    public Integer registerSysUser(SysUser sysUser)throws Exception {
+        Integer integer = sysLoginDao.insertLoginSysUser(sysUser);
         if (integer.equals(1)){
             return integer;
         }

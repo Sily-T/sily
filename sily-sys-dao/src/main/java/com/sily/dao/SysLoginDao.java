@@ -20,5 +20,5 @@ public interface SysLoginDao {
      */
     SysUser selectByLoginName(String account)throws Exception;
 
-    Integer insertLoginSysUser(@Param("account") String account,@Param("password") String password);
+    Integer insertLoginSysUser(SysUser sysUser)throws Exception;
 }
