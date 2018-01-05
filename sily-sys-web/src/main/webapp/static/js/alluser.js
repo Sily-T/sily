@@ -10,8 +10,8 @@ $().ready(function () {
         url: "/user/alluser",
         async: true,
         success: function (result) {
-            for (var i = 0; i++; i < result.length) {
-                $tableFirstTr.append("<td>"+result[i].id+"</td><td>"+result[i].account+"</td><td>"+result[i].userType+"</td><td>"+result[i].userName+"</td><td>"+result[i].sex+"</td><td>"+result[i].phone+"</td><td>"+result[i].email+"</td><td>是否启用</td>");
+            for (var i = 0; i < result.length; i++) {
+                $tableFirstTr.append("<tr><td>"+result[i].id+"</td><td>"+result[i].account+"</td><td>"+result[i].userType+"</td><td>"+result[i].userName+"</td><td>"+result[i].sex+"</td><td>"+result[i].phone+"</td><td>"+result[i].email+"</td><td>是否启用</td></tr>");
             }
         },
         error: function (result) {

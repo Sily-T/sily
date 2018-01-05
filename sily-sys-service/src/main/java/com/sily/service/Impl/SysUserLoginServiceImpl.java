@@ -48,10 +48,13 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
         return 0;
     }
 
+    /**
+     * 查询所有用户
+     */
     @Override
     public List<SysUser> selectSysUser() throws Exception {
-        List<SysUser> list = sysUserDao.selectSysUser();
-        return list;
+        List<SysUser> userList = sysUserDao.selectSysUser();
+        return userList;
     }
 
     /**
