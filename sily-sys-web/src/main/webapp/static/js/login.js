@@ -21,7 +21,7 @@ $(document).ready(function(){
             data: JSON.stringify(sysUser),
             success: function (result) {
                     console.log(result);
-                    window.location.href = "../html/index.html";
+                    window.location.href = "/html/index.html";
             },
             error: function (result) {
                 alert(result);
