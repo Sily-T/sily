@@ -39,14 +39,7 @@ public class SysUserController {
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     @ResponseBody
     public String userRegister(@RequestBody SysUser sysUser) {
-        try {
-            System.out.println(sysUserLoginService.registerSysUser(sysUser));
             return String.valueOf(sysUserLoginService.registerSysUser(sysUser));
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-            e.getStackTrace();
-        }
-        return "1";
     }
 
     /**

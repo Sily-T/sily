@@ -21,7 +21,7 @@ public interface SysUserLoginService {
     /**
      * 用户注册
      */
-    Integer registerSysUser(SysUser sysUser)throws Exception;
+    Integer registerSysUser(SysUser sysUser);
 
     /**
      * 查询所有用户

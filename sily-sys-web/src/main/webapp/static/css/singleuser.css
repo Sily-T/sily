@@ -1,0 +1,6 @@
+/*panel的头部距离*/
+.panel{
+    margin-top: 15px;
+    box-shadow: 1px 1px 7px rgba(0, 0, 0, .4);
+    opacity: 0.95;
+}
