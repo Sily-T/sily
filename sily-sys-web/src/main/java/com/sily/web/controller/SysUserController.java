@@ -50,4 +50,13 @@ public class SysUserController {
     public List<SysUser> selectSysUser() throws Exception {
         return sysUserLoginService.selectSysUser();
     }
+
+    /**
+     * 根据id查询用户
+     */
+    @RequestMapping(value = "/singleuser", method = RequestMethod.POST)
+    @ResponseBody
+    public SysUser selectSysUserById(@RequestBody SysUser sysUser) throws Exception {
+        return sysUserLoginService.selectSysUserById(sysUser);
+    }
 }

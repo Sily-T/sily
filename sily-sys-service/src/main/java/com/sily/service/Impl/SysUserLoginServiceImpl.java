@@ -70,7 +70,7 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
      */
     @Override
     public SysUser selectSysUserById(SysUser sysUser) throws Exception {
-        return null;
+        return sysUserDao.selectSysUserById(sysUser.getId());
     }
 
     /**
