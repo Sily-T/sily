@@ -18,4 +18,6 @@ public interface SysLoginDao {
      * @return
      */
     SysUser selectByLoginName(String account)throws Exception;
+
+    Integer insertLoginSysUser(String account,String password)throws Exception;
 }
