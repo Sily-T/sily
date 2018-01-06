@@ -63,4 +63,10 @@ public interface SysUserDao{
 	 * @return
 	 */
     int updateNonEmptySysUserById(SysUser enti);
+
+	/**
+	 * 获得SysUser分页的数据集合
+	 * @return
+	 */
+	List<SysUser> selectSysUserLimit(int pageNum,int pageSize);
 }

@@ -20,7 +20,13 @@ public interface SysLoginDao {
      */
     SysUser selectByLoginName(String account)throws Exception;
 
+    /**
+     * 注册用户
+     */
     Integer insertLoginSysUser(SysUser sysUser)throws Exception;
 
+    /**
+     * 更新用户信息
+     */
     Integer updateSysUserById(SysUser sysUser);
 }

@@ -61,6 +61,7 @@
     <select id="getSysUserRowCount" resultType="java.lang.Long">
         select count(*) from sys_user
     </select>
+
     <!-- 获得类名为:SysUser对应数据库中表的数据集合 -->
     <select id="selectSysUser" resultMap="result_SysUser_Map">
         select 
@@ -293,4 +294,10 @@
         where id=#{id}
     </update>
 
+    <!-- 获得类名为:SysUser对应数据库中表的数据集合 -->
+    <select id="selectSysUserLimit" resultMap="result_SysUser_Map">
+        select
+        <include refid="sys_user_Column" />
+        from sys_user limit ${(pageNum-1)*pageSize,$(pageNum * pageSize)}
+    </select>
 </mapper>

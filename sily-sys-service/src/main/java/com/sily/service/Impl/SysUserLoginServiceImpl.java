@@ -58,6 +58,14 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
     }
 
     /**
+     * 查询所有用户并分页的数据集合
+     */
+    @Override
+    public List<SysUser> selectSysUserLimit(int pageNum,int pageSize){
+        return sysUserDao.selectSysUserLimit(pageNum,pageSize);
+    }
+
+    /**
      * 新增用户
      */
     @Override

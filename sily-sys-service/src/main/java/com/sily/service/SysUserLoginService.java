@@ -29,6 +29,11 @@ public interface SysUserLoginService {
     List<SysUser> selectSysUser();
 
     /**
+     * 查询所有用户并分页的数据集合
+     */
+    List<SysUser> selectSysUserLimit(int pageNum,int pageSize);
+
+    /**
      * 新增用户
      */
     Integer insertSysUser(SysUser sysUser)throws Exception;

@@ -9,15 +9,15 @@ package com.sily.api;
  **/
 public class SysUserVo {
 
-    private SysUser sysUser;
     /**
      * 用户信息
      */
+    private SysUser sysUser;
 
-    private SysUserVo sysUserVo;
     /**
      * 为了系统的可扩展性，对原始生成的po进行扩展
      */
+    private SysUserVo sysUserVo;
 
     public SysUser getSysUser() {
         return sysUser;

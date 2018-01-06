@@ -52,6 +52,15 @@ public class SysUserController {
     }
 
     /**
+     * 查询所有用户并分页
+     */
+    @RequestMapping(value = "/alluserlist", method = RequestMethod.POST)
+    @ResponseBody
+    public List<SysUser> selectSysUser(@RequestBody int pageNum,int pageSize) {
+        return sysUserLoginService.selectSysUserLimit(pageNum,pageSize);
+    }
+
+    /**
      * 根据id查询用户
      */
     @RequestMapping(value = "/singleuser", method = RequestMethod.POST)

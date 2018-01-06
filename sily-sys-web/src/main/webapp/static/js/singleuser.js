@@ -4,7 +4,7 @@ $().ready(function () {
     var userID = location.search.substring(1);
     var jsonUserId = {"id": userID};
     //请求所有角色信息,此处还未修改
-    // ajaxAllRole();
+    ajaxAllRole();
     //请求该用户的信息
     ajaxUserInfo(jsonUserId);
     //保存按钮：修改该用户信息
@@ -34,21 +34,21 @@ function ajaxAllRole() {
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
-        url: "",
+        url: "/role/allrolelist",
         async: false,
-        success: function (result) {
+        success: function (allRole) {
             //生成所有角色dom节点
-            for (var i = 0; i < result.length; i++) {
+            for (var i = 0; i < allRole.length; i++) {
                 $('#ol-roles').append("<li>\n" +
                     "                                <div class='checkbox'>\n" +
                     "                                    <label>\n" +
-                    "                                        <input type='checkbox'> +result[i]+\n" +
+                    "                                        <input type='checkbox'> "+allRole[i].roleName+"\n" +
                     "                                    </label>\n" +
                     "                                </div>\n" +
                     "                            </li>");
             }
         },
-        error: function (result) {
+        error: function (allRole) {
             console.log("ajaxAllRole fail");
         }
     })
