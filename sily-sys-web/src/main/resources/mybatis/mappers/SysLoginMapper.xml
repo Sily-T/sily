@@ -8,4 +8,33 @@
     <insert id="insertLoginSysUser">
         INSERT INTO sys_user(sys_user.account,sys_user.password) VALUES(#{account},#{password});
     </insert>
+
+    <!-- 通过SysUser的id将SysUser的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysUserById" parameterType="SysUser">
+        update sys_user set
+        qq=#{qq}
+        ,birthday=#{birthday}
+        ,name_pinyin=#{namePinyin}
+        ,address=#{address}
+        ,create_time=#{createTime}
+        ,user_name=#{userName}
+        ,sex=#{sex}
+        ,id_card=#{idCard}
+        ,wei_xin=#{weiXin}
+        ,remark=#{remark}
+        ,avatar=#{avatar}
+        ,staff_no=#{staffNo}
+        ,create_by=#{createBy}
+        ,password=#{password}
+        ,update_time=#{updateTime}
+        ,user_type=#{userType}
+        ,phone=#{phone}
+        ,enable=#{enable}
+        ,iposition=#{iposition}
+        ,dept_id=#{deptId}
+        ,update_by=#{updateBy}
+        ,account=#{account}
+        ,email=#{email}
+        where id=#{id}
+    </update>
 </mapper>

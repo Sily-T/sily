@@ -47,7 +47,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/alluser", method = RequestMethod.POST)
     @ResponseBody
-    public List<SysUser> selectSysUser() throws Exception {
+    public List<SysUser> selectSysUser() {
         return sysUserLoginService.selectSysUser();
     }
 
@@ -58,5 +58,14 @@ public class SysUserController {
     @ResponseBody
     public SysUser selectSysUserById(@RequestBody SysUser sysUser) throws Exception {
         return sysUserLoginService.selectSysUserById(sysUser);
+    }
+
+    /**
+     * 根据id更新用户
+     */
+    @RequestMapping(value = "/updateSingleuser", method = RequestMethod.POST)
+    @ResponseBody
+    public Integer updateSysUserById(@RequestBody SysUser sysUser){
+        return sysUserLoginService.updateSysUserById(sysUser);
     }
 }

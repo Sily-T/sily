@@ -22,7 +22,7 @@
         <result column="user_type" property="userType" />
         <result column="phone" property="phone" />
         <result column="enable" property="enable" />
-        <result column="position" property="position" />
+        <result column="iposition" property="iposition" />
         <result column="dept_id" property="deptId" />
         <result column="update_by" property="updateBy" />
         <result column="account" property="account" />
@@ -50,7 +50,7 @@
         ,sys_user.user_type as user_type
         ,sys_user.phone as phone
         ,sys_user.enable as enable
-        ,sys_user.position as position
+        ,sys_user.iposition as iposition
         ,sys_user.dept_id as dept_id
         ,sys_user.update_by as update_by
         ,sys_user.account as account
@@ -208,7 +208,7 @@
             ,user_type=#{userType}
             ,phone=#{phone}
             ,enable=#{enable}
-            ,position=#{position}
+            ,iposition=#{iposition}
             ,dept_id=#{deptId}
             ,update_by=#{updateBy}
             ,account=#{account}

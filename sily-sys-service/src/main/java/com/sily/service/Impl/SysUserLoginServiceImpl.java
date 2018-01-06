@@ -52,7 +52,7 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
      * 查询所有用户
      */
     @Override
-    public List<SysUser> selectSysUser() throws Exception {
+    public List<SysUser> selectSysUser() {
         List<SysUser> userList = sysUserDao.selectSysUser();
         return userList;
     }
@@ -77,15 +77,19 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
      * 根据id删除用户
      */
     @Override
-    public Integer deleteSysUserById(SysUser sysUser) throws Exception {
-        return null;
+    public void deleteSysUserById(SysUser sysUser) throws Exception {
+        sysUserDao.deleteSysUserById(sysUser.getId());
     }
 
     /**
-     * 根据id修改用户
+     * 根据id更新用户
      */
     @Override
-    public Integer updateSysUserById(SysUser sysUser) throws Exception {
-        return null;
+    public Integer updateSysUserById(SysUser sysUser){
+        Integer integer = sysLoginDao.updateSysUserById(sysUser);
+        if (integer.equals(1)){
+            return integer;
+        }
+        return 0;
     }
 }

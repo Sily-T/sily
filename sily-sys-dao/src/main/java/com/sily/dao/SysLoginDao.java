@@ -21,4 +21,6 @@ public interface SysLoginDao {
     SysUser selectByLoginName(String account)throws Exception;
 
     Integer insertLoginSysUser(SysUser sysUser)throws Exception;
+
+    Integer updateSysUserById(SysUser sysUser);
 }

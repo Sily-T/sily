@@ -26,7 +26,7 @@ public interface SysUserLoginService {
     /**
      * 查询所有用户
      */
-    List<SysUser> selectSysUser()throws Exception;
+    List<SysUser> selectSysUser();
 
     /**
      * 新增用户
@@ -41,10 +41,10 @@ public interface SysUserLoginService {
     /**
      * 根据id删除用户
      */
-    Integer deleteSysUserById(SysUser sysUser)throws Exception;
+    void deleteSysUserById(SysUser sysUser)throws Exception;
 
     /**
-     * 根据id修改用户
+     * 根据id更新用户
      */
-    Integer updateSysUserById(SysUser sysUser)throws Exception;
+    Integer updateSysUserById(SysUser sysUser);
 }

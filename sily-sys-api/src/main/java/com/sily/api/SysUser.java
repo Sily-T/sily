@@ -75,7 +75,7 @@ public class SysUser {
     /**
      * 职位
      */
-    private String position;
+    private String iposition;
     /**
      * 部门编号
      */
@@ -242,12 +242,12 @@ public class SysUser {
         this.enable = enable;
     }
 
-    public String getPosition() {
-        return position;
+    public String getIposition() {
+        return iposition;
     }
 
-    public void setPosition(String position) {
-        this.position = position;
+    public void setIposition(String iposition) {
+        this.iposition = iposition;
     }
 
     public Long getDeptId() {
