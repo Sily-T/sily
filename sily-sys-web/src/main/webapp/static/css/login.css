@@ -11,7 +11,11 @@
 /*login div大小*/
 .login{
     margin: auto;
-    width: 35%;
+    width: 28%;
+}
+.register{
+    margin: auto;
+    width: 28%;
 }
 .login-icon {
     /*width: 300px;*/
