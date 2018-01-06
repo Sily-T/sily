@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sily.dao.SysRoleDao">
+    <!-- SysRole的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_SysRole_Map" type="com.sily.api.SysRole">
+        <id column="id" property="id" />
+        <result column="role_name" property="roleName" />
+        <result column="create_by" property="createBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="role_type" property="roleType" />
+        <result column="create_time" property="createTime" />
+        <result column="enable" property="enable" />
+        <result column="remark" property="remark" />
+        <result column="dept_id" property="deptId" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 数据库中表名为:sys_role的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="sys_role_Column">
+        sys_role.id as id
+        ,sys_role.role_name as role_name
+        ,sys_role.create_by as create_by
+        ,sys_role.update_time as update_time
+        ,sys_role.role_type as role_type
+        ,sys_role.create_time as create_time
+        ,sys_role.enable as enable
+        ,sys_role.remark as remark
+        ,sys_role.dept_id as dept_id
+        ,sys_role.update_by as update_by
+    </sql>
+
+    <!--获得类名为:SysRole对应的数据库表的数据总行数 -->
+    <select id="getSysRoleRowCount" resultType="java.lang.Long">
+        select count(id) from sys_role
+    </select>
+    <!-- 获得类名为:SysRole对应数据库中表的数据集合 -->
+    <select id="selectSysRole" resultMap="result_SysRole_Map">
+        select 
+        <include refid="sys_role_Column" /> 
+        from sys_role
+    </select> 
+
+    <!-- 获得一个SysRole对象,以参数SysRole对象中不为空的属性作为条件进行查询-->
+    <select id="selectSysRoleByObj" parameterType="com.sily.api.SysRole" resultMap="result_SysRole_Map">
+        select 
+            <include refid="sys_role_Column" /> 
+        from sys_role
+        <where>
+            <if test="updateBy != null "> and sys_role.update_by = #{updateBy}</if>
+            <if test="deptId != null "> and sys_role.dept_id = #{deptId}</if>
+            <if test="remark != null "> and sys_role.remark = #{remark}</if>
+            <if test="enable != null "> and sys_role.enable = #{enable}</if>
+            <if test="createTime != null "> and sys_role.create_time = #{createTime}</if>
+            <if test="roleType != null "> and sys_role.role_type = #{roleType}</if>
+            <if test="updateTime != null "> and sys_role.update_time = #{updateTime}</if>
+            <if test="createBy != null "> and sys_role.create_by = #{createBy}</if>
+            <if test="roleName != null "> and sys_role.role_name = #{roleName}</if>
+            <if test="id != null "> and sys_role.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过SysRole的id获得对应数据库中表的数据对象-->
+    <select id="selectSysRoleById" parameterType="java.lang.Long" resultMap="result_SysRole_Map">
+        select 
+            <include refid="sys_role_Column" /> 
+        from sys_role
+        where sys_role.id = #{id}
+    </select> 
+
+    <!-- 将SysRole插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertSysRole" parameterType="com.sily.api.SysRole">
+        insert into sys_role(id,role_name,create_by,update_time,role_type,create_time,enable,remark,dept_id,update_by) 
+        values(#{id},#{roleName},#{createBy},#{updateTime},#{roleType},#{createTime},#{enable},#{remark},#{deptId},#{updateBy})
+    </insert>
+
+    <!-- 将SysRole中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptySysRole" parameterType="com.sily.api.SysRole">
+        insert into sys_role
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="roleName != null">role_name,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="roleType != null">role_type,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="enable != null">enable,</if>
+            <if test="remark != null">remark,</if>
+            <if test="deptId != null">dept_id,</if>
+            <if test="updateBy != null">update_by,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="roleName != null"> #{roleName},</if>
+            <if test="createBy != null"> #{createBy},</if>
+            <if test="updateTime != null"> #{updateTime},</if>
+            <if test="roleType != null"> #{roleType},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="enable != null"> #{enable},</if>
+            <if test="remark != null"> #{remark},</if>
+            <if test="deptId != null"> #{deptId},</if>
+            <if test="updateBy != null"> #{updateBy},</if>
+        </trim>
+    </insert>
+
+    <!-- 将SysRole批量插入到对应数据库的表中-->
+    <insert id="insertSysRoleByBatch" parameterType="ArrayList">
+        insert into sys_role(id,role_name,create_by,update_time,role_type,create_time,enable,remark,dept_id,update_by) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.roleName},#{item.createBy},#{item.updateTime},#{item.roleType},#{item.createTime},#{item.enable},#{item.remark},#{item.deptId},#{item.updateBy})
+        </foreach>
+    </insert>
+
+    <!-- 通过SysRole的id将数据库表中对应的数据删除-->
+    <delete id="deleteSysRoleById" parameterType="java.lang.Long">
+        delete from sys_role
+        where id = #{id}
+    </delete>
+
+    <!-- 通过SysRole的id将SysRole的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysRoleById" parameterType="com.sily.api.SysRole">
+        update sys_role set
+            role_name=#{roleName}
+            ,create_by=#{createBy}
+            ,update_time=#{updateTime}
+            ,role_type=#{roleType}
+            ,create_time=#{createTime}
+            ,enable=#{enable}
+            ,remark=#{remark}
+            ,dept_id=#{deptId}
+            ,update_by=#{updateBy}
+        where id=#{id}
+    </update>
+
+    <!-- 通过SysRole的id将SysRole中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptySysRoleById" parameterType="com.sily.api.SysRole">
+        update sys_role
+        <set>
+            <if test="roleName != null">
+                role_name=#{roleName},
+            </if>
+            <if test="createBy != null">
+                create_by=#{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time=#{updateTime},
+            </if>
+            <if test="roleType != null">
+                role_type=#{roleType},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="enable != null">
+                enable=#{enable},
+            </if>
+            <if test="remark != null">
+                remark=#{remark},
+            </if>
+            <if test="deptId != null">
+                dept_id=#{deptId},
+            </if>
+            <if test="updateBy != null">
+                update_by=#{updateBy},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>

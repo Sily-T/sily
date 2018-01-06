@@ -20,13 +20,13 @@ $().ready(function () {
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
-        url: "",
+        url: "/role/allrolelist",
         async: false,
         data: JSON.stringify(),
         success: function (result) {
             console.log("success");
             for (var i = 0; i < result.length; i++) {
-                // $('#role-select').append("<option>"+result.+"</option>");
+                $('#role-select').append("<option>"+result[i].roleName+"</option>");
             }
         },
         error: function (result) {

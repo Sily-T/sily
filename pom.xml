@@ -237,6 +237,7 @@
             <!--<artifactId>shiro-spring</artifactId>-->
             <!--<version>${shiro.version}</version>-->
         <!--</dependency>-->
+        <!-- PageHelper分页 -->
     </dependencies>
     <build>
         <plugins>
