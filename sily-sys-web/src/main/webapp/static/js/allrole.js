@@ -2,15 +2,25 @@ var zTreeObj;
 // zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
 var setting = {
     check:{
-        enable: true         //设置是否显示checkbox复选框
+        enable: true  ,       //设置是否显示checkbox复选框
+        chkStyle: "checkbox",
+        chkboxType : { "Y" : "ps", "N" : "ps" } //父子关联关系
+    },
+    view: {
+        showLine: true,
+        selectedMulti: false, },
+    data: {
+        simpleData: {
+            enable: true
+        }
     }
 };
 // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
 var zNodes = [
     {name:"用户", open:true, children:[
-            {name:"查询用户"}, {name:"修改用户"},{name:"增加用户"}, {name:"删除用户"}]},
+            {name:"查询用户",nocheck: false }, {name:"修改用户",nocheck: true},{name:"增加用户",nocheck: true}, {name:"删除用户",nocheck: true}]},
     {name:"部门", open:true, children:[
-            {name:"查询部门"}, {name:"修改部门"}, {name:"增加部门"}, {name:"删除部门"}]}
+            {name:"查询部门",nocheck: true}, {name:"修改部门",nocheck: true}, {name:"增加部门",nocheck: true}, {name:"删除部门",nocheck: true}]}
 ];
 $().ready(function () {
 

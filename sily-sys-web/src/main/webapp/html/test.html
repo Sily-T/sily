@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../static/js/plugins/ztree/zTreeStyle.css">
+    <script src="../static/js/jquery-3.2.1.min.js"></script>
+    <script src="../static/js/plugins/ztree/jquery.ztree.core.min.js"></script>
+    <script src="../static/js/plugins/ztree/jquery.ztree.excheck.min.js"></script>
+
+
+
+</head>
+<script type="text/javascript">
+    <!--
+    var setting = {
+        check: {
+            enable: true,
+            nocheckInherit: false,
+            chkboxType : { "Y" : "ps", "N" : "ps" }
+        },
+        data: {
+            simpleData: {
+                enable: true
+            }
+        }
+    };
+    //ztree用于初始化的静态数据
+    var zNodes = [
+        { id:1, pId:0, name:"随意勾选 1", open:true},
+        { id: 11, pId: 1, name: "随意勾选 1-1", nocheck: true },
+        { id: 111, pId: 11, name: "无 checkbox 1-1-1", nocheck: true },
+        { id: 112, pId: 11, name: "随意勾选 1-1-2", nocheck: true },
+        { id: 12, pId: 1, name: "无 checkbox 1-2", nocheck: true },
+        { id: 2, pId: 0, name: "随意勾选 2", nocheck: true },
+    ];
+
+    //过滤节点的机制 直接return node表示不做任何过滤
+    function filter(node) {
+        return node;
+    }
+
+    ///动态设置zTree的所有节点有checkbox
+    function DynamicUpdateNodeCheck() {
+        var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+        //根据过滤机制获得zTree的所有节点
+        var nodes = zTree.getNodesByFilter(filter);
+        //遍历每一个节点然后动态更新nocheck属性值
+        for (var i = 0; i < nodes.length; i++) {
+            var node = nodes[i];
+            node.nocheck = false; //表示显示checkbox
+            zTree.updateNode(node);
+        }
+    }
+
+    ///页面加载后初始化zTree数据且默认展开所有节点
+    $(document).ready(function () {
+        $.fn.zTree.init($("#treeDemo"), setting, zNodes).expandAll(true);
+    });
+    //-->
+</script>
+</head>
+<body>
+<h1>
+    Checkbox nocheck 演示</h1>
+<div class="content_wrap">
+    <div class="zTreeDemoBackground left">
+        <ul id="treeDemo" class="ztree">
+        </ul>
+    </div>
+    <div class="right">
+        <p>
+            默认情况下设置任何节点无checkbox选择框，需要配置每一个节点的nocheck属性为true即可。</p>
+        <p>
+            zTree加载完成后通过updateNode(node)方法动态更新节点的nocheck属性为false，则节点将会显示checkbox。</p>
+        <h3>
+            STEP DAY</h3>
+        <div>
+            <input type="button" value="动态设置节点有checkbox" onclick="DynamicUpdateNodeCheck()" />
+        </div>
+    </div>
+</div>
+</body>
+</html>
