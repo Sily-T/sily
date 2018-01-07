@@ -11,11 +11,10 @@ var setting = {
         selectedMulti: true, },//允许选多个,按下 Ctrl 或 Cmd 键可以选中多个节点
     data: {
         simpleData: {
-            enable: false  //没有开启简单形式，就是通过数组形式传输
-            // enable : true,
-            // idKey : "unitId",
-            // pIdKey : "upUnitId",
-            // rootPId : 0
+            enable : true, //没有开启简单形式，就是通过数组形式传输
+            idKey : "id",
+            pIdKey : "pId",
+            rootPId : null
         }
     }
 };
@@ -24,11 +23,12 @@ var zNodes = [
     // {name:"用户", open:true, children:[
     //         {name:"查询用户" }, {name:"修改用户"},{name:"增加用户"}, {name:"删除用户"}]},
     //
-    {name:"用户",isParent:true},{name:"查询用户" }, {name:"修改用户"},{name:"增加用户"}, {name:"删除用户"}
+    {name:"用户","id":1,"pId":null},{name:"查询用户","id":11,"pId":1 }, {name:"修改用户","id":12,"pId":1},{name:"增加用户","id":13,"pId":1}, {name:"删除用户","id":14,"pId":1}
 
 ];
 $().ready(function () {
     zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
+
 
     //请求所有角色信息，ajax需要是同步，async要设置为false
     $.ajax({
@@ -37,33 +37,44 @@ $().ready(function () {
         url: "/role/allrolelist",
         async: false,
         data: JSON.stringify(),
-        success: function (result) {
+        success: function (roleList) {
             console.log("success");
             for (var i = 0; i < result.length; i++) {
-                $('#role-select').append("<option>"+result[i].roleName+"</option>");
+                //2018年1月7日早上修改
+                $('#role-select').append("<option id='"+roleList[i].id+"' onclick='ajaxGetRoleMenu("+roleList[i].id+")'>"+roleList[i].roleName+"</option>");
             }
         },
-        error: function (result) {
+        error: function (roleList) {
             console.log("fail");
         }
     });
 
 
-    //根据点击角色，显示角色的权限
+});
 
+//根据点击角色，显示角色的菜单权限
+function ajaxGetRoleMenu(roleId) {
+    // 转换为json对象
+    var jsonRoleId={"id":roleId};
+    // 请求角色菜单权限
     $.ajax({
         type: "POST",
         contentType: "application/json;charset=utf-8",
         url: "",
         async: true,
-        data: JSON.stringify(),
-        success: function (result) {
+        data: JSON.stringify(jsonRoleId),
+        success: function (menuList) {
             console.log("success");
-        //此处生成树形结构
+            //此处生成树形结构，为treeObj添加新的节点，返回的result要转换成类似这种形式
+            //     var exNodes = [
+            //         {name:"用户","id":1,"pId":null},{name:"查询用户","id":11,"pId":1 }, {name:"修改用户","id":12,"pId":1}
+            //     ];
 
+            //此处选择整一个tree对象，getZTreeObj是通过id查询，参数并非选择器类型
+            //     $.fn.zTree.getZTreeObj("treeDemo").addNodes(null, exNodes);
         },
-        error: function (result) {
+        error: function (menuList) {
             //此处应该显示404html，或者尝试刷新界面
         }
     })
-});
+}
