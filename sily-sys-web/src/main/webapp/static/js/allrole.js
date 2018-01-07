@@ -1,5 +1,5 @@
 var zTreeObj;
-// zTree 的参数配置，深入使用请参考 API 文档（setting 配置详解）
+
 var setting = {
     check:{
         enable: true  ,       //设置是否显示checkbox复选框
@@ -7,23 +7,27 @@ var setting = {
         chkboxType : { "Y" : "ps", "N" : "ps" } //父子关联关系
     },
     view: {
-        showLine: true,
-        selectedMulti: false, },
+        showLine: true,  //显示连线
+        selectedMulti: true, },//允许选多个,按下 Ctrl 或 Cmd 键可以选中多个节点
     data: {
         simpleData: {
-            enable: true
+            enable: false  //没有开启简单形式，就是通过数组形式传输
+            // enable : true,
+            // idKey : "unitId",
+            // pIdKey : "upUnitId",
+            // rootPId : 0
         }
     }
 };
-// zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
+// zTreeNode 节点数据详解 ，
 var zNodes = [
-    {name:"用户", open:true, children:[
-            {name:"查询用户",check:false }, {name:"修改用户",nocheck: true},{name:"增加用户",nocheck: true}, {name:"删除用户",nocheck: true}]},
-    {name:"部门", open:true, children:[
-            {name:"查询部门",check:true}, {name:"修改部门",nocheck: true}, {name:"增加部门",nocheck: true}, {name:"删除部门",nocheck: true}]}
+    // {name:"用户", open:true, children:[
+    //         {name:"查询用户" }, {name:"修改用户"},{name:"增加用户"}, {name:"删除用户"}]},
+    //
+    {name:"用户",isParent:true},{name:"查询用户" }, {name:"修改用户"},{name:"增加用户"}, {name:"删除用户"}
+
 ];
 $().ready(function () {
-
     zTreeObj = $.fn.zTree.init($("#treeDemo"), setting, zNodes);
 
     //请求所有角色信息，ajax需要是同步，async要设置为false
