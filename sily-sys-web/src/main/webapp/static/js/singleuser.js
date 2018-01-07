@@ -42,7 +42,7 @@ function ajaxAllRole() {
                 $('#ol-roles').append("<li>\n" +
                     "                                <div class='checkbox'>\n" +
                     "                                    <label>\n" +
-                    "                                        <input type='checkbox'> "+allRole[i].roleName+"\n" +
+                    "                                        <input id='"+allRole[i].id+"' type='checkbox'> "+allRole[i].roleName+"\n" +
                     "                                    </label>\n" +
                     "                                </div>\n" +
                     "                            </li>");
