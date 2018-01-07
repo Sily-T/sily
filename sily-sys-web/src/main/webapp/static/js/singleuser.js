@@ -3,6 +3,7 @@ $().ready(function () {
     // 获取当前用户id，url问号后面的值
     var userID = location.search.substring(1);
     var jsonUserId = {"id": userID};
+    var userType;
     //请求所有角色信息,此处还未修改
     ajaxAllRole();
     //请求该用户的信息
@@ -96,7 +97,8 @@ function returnUpdateUserInfoJson () {
         "sex": sex,
         "birthday": $('#birthday').val(),
         "deptId": $('#dept-id').val(),
-        "enable": $("#select option:selected").val()
+        "enable": $("#select option:selected").val(),
+        "userType":$('.checkbox~:checkbox:checked').attr('id')
     };
     return jsonUser
 }

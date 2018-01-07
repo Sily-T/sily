@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sily.dao.SysRoleMenuDao">
+    <!-- SysRoleMenu的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_SysRoleMenu_Map" type="com.sily.api.SysRoleMenu">
+        <id column="id" property="id" />
+        <result column="create_by" property="createBy" />
+        <result column="update_time" property="updateTime" />
+        <result column="create_time" property="createTime" />
+        <result column="role_id" property="roleId" />
+        <result column="enable" property="enable" />
+        <result column="permission" property="permission" />
+        <result column="remark" property="remark" />
+        <result column="update_by" property="updateBy" />
+        <result column="menu_id" property="menuId" />
+    </resultMap>
+
+    <!-- 数据库中表名为:sys_role_menu的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="sys_role_menu_Column">
+        sys_role_menu.id as id
+        ,sys_role_menu.create_by as create_by
+        ,sys_role_menu.update_time as update_time
+        ,sys_role_menu.create_time as create_time
+        ,sys_role_menu.role_id as role_id
+        ,sys_role_menu.enable as enable
+        ,sys_role_menu.permission as permission
+        ,sys_role_menu.remark as remark
+        ,sys_role_menu.update_by as update_by
+        ,sys_role_menu.menu_id as menu_id
+    </sql>
+
+    <!--获得类名为:SysRoleMenu对应的数据库表的数据总行数 -->
+    <select id="getSysRoleMenuRowCount" resultType="java.lang.Long">
+        select count(id) from sys_role_menu
+    </select>
+    <!-- 获得类名为:SysRoleMenu对应数据库中表的数据集合 -->
+    <select id="selectSysRoleMenu" resultMap="result_SysRoleMenu_Map">
+        select 
+        <include refid="sys_role_menu_Column" /> 
+        from sys_role_menu
+    </select> 
+
+    <!-- 获得一个SysRoleMenu对象,以参数SysRoleMenu对象中不为空的属性作为条件进行查询-->
+    <select id="selectSysRoleMenuByObj" parameterType="com.sily.api.SysRoleMenu" resultMap="result_SysRoleMenu_Map">
+        select 
+            <include refid="sys_role_menu_Column" /> 
+        from sys_role_menu
+        <where>
+            <if test="menuId != null "> and sys_role_menu.menu_id = #{menuId}</if>
+            <if test="updateBy != null "> and sys_role_menu.update_by = #{updateBy}</if>
+            <if test="remark != null "> and sys_role_menu.remark = #{remark}</if>
+            <if test="permission != null "> and sys_role_menu.permission = #{permission}</if>
+            <if test="enable != null "> and sys_role_menu.enable = #{enable}</if>
+            <if test="roleId != null "> and sys_role_menu.role_id = #{roleId}</if>
+            <if test="createTime != null "> and sys_role_menu.create_time = #{createTime}</if>
+            <if test="updateTime != null "> and sys_role_menu.update_time = #{updateTime}</if>
+            <if test="createBy != null "> and sys_role_menu.create_by = #{createBy}</if>
+            <if test="id != null "> and sys_role_menu.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过SysRoleMenu的id获得对应数据库中表的数据对象-->
+    <select id="selectSysRoleMenuById" parameterType="java.lang.Long" resultMap="result_SysRoleMenu_Map">
+        select 
+            <include refid="sys_role_menu_Column" /> 
+        from sys_role_menu
+        where sys_role_menu.id = #{id}
+    </select> 
+
+    <!-- 将SysRoleMenu插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertSysRoleMenu" parameterType="com.sily.api.SysRoleMenu">
+        insert into sys_role_menu(id,create_by,update_time,create_time,role_id,enable,permission,remark,update_by,menu_id) 
+        values(#{id},#{createBy},#{updateTime},#{createTime},#{roleId},#{enable},#{permission},#{remark},#{updateBy},#{menuId})
+    </insert>
+
+    <!-- 将SysRoleMenu中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptySysRoleMenu" parameterType="com.sily.api.SysRoleMenu">
+        insert into sys_role_menu
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="roleId != null">role_id,</if>
+            <if test="enable != null">enable,</if>
+            <if test="permission != null">permission,</if>
+            <if test="remark != null">remark,</if>
+            <if test="updateBy != null">update_by,</if>
+            <if test="menuId != null">menu_id,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="createBy != null"> #{createBy},</if>
+            <if test="updateTime != null"> #{updateTime},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="roleId != null"> #{roleId},</if>
+            <if test="enable != null"> #{enable},</if>
+            <if test="permission != null"> #{permission},</if>
+            <if test="remark != null"> #{remark},</if>
+            <if test="updateBy != null"> #{updateBy},</if>
+            <if test="menuId != null"> #{menuId},</if>
+        </trim>
+    </insert>
+
+    <!-- 将SysRoleMenu批量插入到对应数据库的表中-->
+    <insert id="insertSysRoleMenuByBatch" parameterType="ArrayList">
+        insert into sys_role_menu(id,create_by,update_time,create_time,role_id,enable,permission,remark,update_by,menu_id) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.createBy},#{item.updateTime},#{item.createTime},#{item.roleId},#{item.enable},#{item.permission},#{item.remark},#{item.updateBy},#{item.menuId})
+        </foreach>
+    </insert>
+
+    <!-- 通过SysRoleMenu的id将数据库表中对应的数据删除-->
+    <delete id="deleteSysRoleMenuById" parameterType="java.lang.Long">
+        delete from sys_role_menu
+        where id = #{id}
+    </delete>
+
+    <!-- 通过SysRoleMenu的id将SysRoleMenu的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysRoleMenuById" parameterType="com.sily.api.SysRoleMenu">
+        update sys_role_menu set
+            create_by=#{createBy}
+            ,update_time=#{updateTime}
+            ,create_time=#{createTime}
+            ,role_id=#{roleId}
+            ,enable=#{enable}
+            ,permission=#{permission}
+            ,remark=#{remark}
+            ,update_by=#{updateBy}
+            ,menu_id=#{menuId}
+        where id=#{id}
+    </update>
+
+    <!-- 通过SysRoleMenu的id将SysRoleMenu中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptySysRoleMenuById" parameterType="com.sily.api.SysRoleMenu">
+        update sys_role_menu
+        <set>
+            <if test="createBy != null">
+                create_by=#{createBy},
+            </if>
+            <if test="updateTime != null">
+                update_time=#{updateTime},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="roleId != null">
+                role_id=#{roleId},
+            </if>
+            <if test="enable != null">
+                enable=#{enable},
+            </if>
+            <if test="permission != null">
+                permission=#{permission},
+            </if>
+            <if test="remark != null">
+                remark=#{remark},
+            </if>
+            <if test="updateBy != null">
+                update_by=#{updateBy},
+            </if>
+            <if test="menuId != null">
+                menu_id=#{menuId},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>
