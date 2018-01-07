@@ -238,6 +238,12 @@
             <!--<version>${shiro.version}</version>-->
         <!--</dependency>-->
         <!-- PageHelper分页 -->
+        <!--谷歌工具包-->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>23.5-jre</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>
