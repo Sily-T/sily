@@ -12,4 +12,13 @@ public class SysUserCustom extends SysUser{
     /**
      * 添加用户信息的扩展属性
      */
+    private Long roleId;
+
+    public Long getRoleId() {
+        return roleId;
+    }
+
+    public void setRoleId(Long roleId) {
+        this.roleId = roleId;
+    }
 }

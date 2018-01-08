@@ -1,6 +1,7 @@
 package com.sily.web.controller;
 
 import com.sily.api.SysUser;
+import com.sily.api.SysUserCustom;
 import com.sily.service.SysUserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -74,7 +75,7 @@ public class SysUserController {
      */
     @RequestMapping(value = "/updateSingleuser", method = RequestMethod.POST)
     @ResponseBody
-    public Integer updateSysUserById(@RequestBody SysUser sysUser){
-        return sysUserLoginService.updateSysUserById(sysUser);
+    public Integer updateSysUserById(@RequestBody SysUserCustom sysUserCustom){
+        return sysUserLoginService.updateSysUserById(sysUserCustom);
     }
 }

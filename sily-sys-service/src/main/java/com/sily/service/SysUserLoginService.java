@@ -1,6 +1,7 @@
 package com.sily.service;
 
 import com.sily.api.SysUser;
+import com.sily.api.SysUserCustom;
 
 import java.util.List;
 
@@ -51,5 +52,5 @@ public interface SysUserLoginService {
     /**
      * 根据id更新用户
      */
-    Integer updateSysUserById(SysUser sysUser);
+    Integer updateSysUserById(SysUserCustom sysUserCustom);
 }

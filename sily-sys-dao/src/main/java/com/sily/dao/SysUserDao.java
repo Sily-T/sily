@@ -1,5 +1,6 @@
 package com.sily.dao;
 import com.sily.api.SysUser;
+import com.sily.api.SysUserCustom;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -53,10 +54,10 @@ public interface SysUserDao{
     int deleteSysUserById(Long id);
 	/**
 	 * 通过SysUser的id更新SysUser中的数据,包括null值
-	 * @param enti
+	 * @param sysUserCustom
 	 * @return
 	 */
-    int updateSysUserById(SysUser enti);
+    int updateSysUserById(SysUserCustom sysUserCustom);
 	/**
 	 * 通过SysUser的id更新SysUser中属性不为null的数据
 	 * @param enti

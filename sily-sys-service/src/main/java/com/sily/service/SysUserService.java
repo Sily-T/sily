@@ -53,7 +53,7 @@ public interface SysUserService{
 	 * @param enti
 	 * @return
 	 */
-    int updateSysUserById(SysUser enti);
+    /*int updateSysUserById(SysUser enti);*/
 	/**
 	 * 通过SysUser的id更新SysUser中属性不为null的数据
 	 * @param enti

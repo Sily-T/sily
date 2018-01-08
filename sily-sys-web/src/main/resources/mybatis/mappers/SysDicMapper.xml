@@ -1,0 +1,206 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sily.dao.SysDicDao">
+    <!-- SysDic的resultMap,column是给数据库列起的别名,它对应property类的属性-->
+    <resultMap id="result_SysDic_Map" type="com.sily.api.SysDic">
+        <id column="id" property="id" />
+        <result column="code" property="code" />
+        <result column="create_time" property="createTime" />
+        <result column="remark" property="remark" />
+        <result column="type" property="type" />
+        <result column="parent_type" property="parentType" />
+        <result column="code_text" property="codeText" />
+        <result column="create_by" property="createBy" />
+        <result column="sort_no" property="sortNo" />
+        <result column="edit_able" property="editAble" />
+        <result column="update_time" property="updateTime" />
+        <result column="enable" property="enable" />
+        <result column="parent_code" property="parentCode" />
+        <result column="update_by" property="updateBy" />
+    </resultMap>
+
+    <!-- 数据库中表名为:sys_dic的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
+    <sql id="sys_dic_Column">
+        sys_dic.id as id
+        ,sys_dic.code as code
+        ,sys_dic.create_time as create_time
+        ,sys_dic.remark as remark
+        ,sys_dic.type as type
+        ,sys_dic.parent_type as parent_type
+        ,sys_dic.code_text as code_text
+        ,sys_dic.create_by as create_by
+        ,sys_dic.sort_no as sort_no
+        ,sys_dic.edit_able as edit_able
+        ,sys_dic.update_time as update_time
+        ,sys_dic.enable as enable
+        ,sys_dic.parent_code as parent_code
+        ,sys_dic.update_by as update_by
+    </sql>
+
+    <!--获得类名为:SysDic对应的数据库表的数据总行数 -->
+    <select id="getSysDicRowCount" resultType="java.lang.Long">
+        select count(id) from sys_dic
+    </select>
+    <!-- 获得类名为:SysDic对应数据库中表的数据集合 -->
+    <select id="selectSysDic" resultMap="result_SysDic_Map">
+        select 
+        <include refid="sys_dic_Column" /> 
+        from sys_dic
+    </select> 
+
+    <!-- 获得一个SysDic对象,以参数SysDic对象中不为空的属性作为条件进行查询-->
+    <select id="selectSysDicByObj" parameterType="com.sily.api.SysDic" resultMap="result_SysDic_Map">
+        select 
+            <include refid="sys_dic_Column" /> 
+        from sys_dic
+        <where>
+            <if test="updateBy != null "> and sys_dic.update_by = #{updateBy}</if>
+            <if test="parentCode != null "> and sys_dic.parent_code = #{parentCode}</if>
+            <if test="enable != null "> and sys_dic.enable = #{enable}</if>
+            <if test="updateTime != null "> and sys_dic.update_time = #{updateTime}</if>
+            <if test="editAble != null "> and sys_dic.edit_able = #{editAble}</if>
+            <if test="sortNo != null "> and sys_dic.sort_no = #{sortNo}</if>
+            <if test="createBy != null "> and sys_dic.create_by = #{createBy}</if>
+            <if test="codeText != null "> and sys_dic.code_text = #{codeText}</if>
+            <if test="parentType != null "> and sys_dic.parent_type = #{parentType}</if>
+            <if test="type != null "> and sys_dic.type = #{type}</if>
+            <if test="remark != null "> and sys_dic.remark = #{remark}</if>
+            <if test="createTime != null "> and sys_dic.create_time = #{createTime}</if>
+            <if test="code != null "> and sys_dic.code = #{code}</if>
+            <if test="id != null "> and sys_dic.id = #{id}</if>
+        </where>
+    </select> 
+
+    <!-- 通过SysDic的id获得对应数据库中表的数据对象-->
+    <select id="selectSysDicById" parameterType="java.lang.Long" resultMap="result_SysDic_Map">
+        select 
+            <include refid="sys_dic_Column" /> 
+        from sys_dic
+        where sys_dic.id = #{id}
+    </select> 
+
+    <!-- 将SysDic插入到对应数据库的表中,包括属性值为null的数据-->
+
+    <insert id="insertSysDic" parameterType="com.sily.api.SysDic">
+        insert into sys_dic(id,code,create_time,remark,type,parent_type,code_text,create_by,sort_no,edit_able,update_time,enable,parent_code,update_by) 
+        values(#{id},#{code},#{createTime},#{remark},#{type},#{parentType},#{codeText},#{createBy},#{sortNo},#{editAble},#{updateTime},#{enable},#{parentCode},#{updateBy})
+    </insert>
+
+    <!-- 将SysDic中属性值不为null的数据,插入到对应数据库的表中-->
+    <insert id="insertNonEmptySysDic" parameterType="com.sily.api.SysDic">
+        insert into sys_dic
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="code != null">code,</if>
+            <if test="createTime != null">create_time,</if>
+            <if test="remark != null">remark,</if>
+            <if test="type != null">type,</if>
+            <if test="parentType != null">parent_type,</if>
+            <if test="codeText != null">code_text,</if>
+            <if test="createBy != null">create_by,</if>
+            <if test="sortNo != null">sort_no,</if>
+            <if test="editAble != null">edit_able,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="enable != null">enable,</if>
+            <if test="parentCode != null">parent_code,</if>
+            <if test="updateBy != null">update_by,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null"> #{id},</if>
+            <if test="code != null"> #{code},</if>
+            <if test="createTime != null"> #{createTime},</if>
+            <if test="remark != null"> #{remark},</if>
+            <if test="type != null"> #{type},</if>
+            <if test="parentType != null"> #{parentType},</if>
+            <if test="codeText != null"> #{codeText},</if>
+            <if test="createBy != null"> #{createBy},</if>
+            <if test="sortNo != null"> #{sortNo},</if>
+            <if test="editAble != null"> #{editAble},</if>
+            <if test="updateTime != null"> #{updateTime},</if>
+            <if test="enable != null"> #{enable},</if>
+            <if test="parentCode != null"> #{parentCode},</if>
+            <if test="updateBy != null"> #{updateBy},</if>
+        </trim>
+    </insert>
+
+    <!-- 将SysDic批量插入到对应数据库的表中-->
+    <insert id="insertSysDicByBatch" parameterType="ArrayList">
+        insert into sys_dic(id,code,create_time,remark,type,parent_type,code_text,create_by,sort_no,edit_able,update_time,enable,parent_code,update_by) values
+        <foreach collection="list" item="item" index="index" separator="," >
+            (#{item.id},#{item.code},#{item.createTime},#{item.remark},#{item.type},#{item.parentType},#{item.codeText},#{item.createBy},#{item.sortNo},#{item.editAble},#{item.updateTime},#{item.enable},#{item.parentCode},#{item.updateBy})
+        </foreach>
+    </insert>
+
+    <!-- 通过SysDic的id将数据库表中对应的数据删除-->
+    <delete id="deleteSysDicById" parameterType="java.lang.Long">
+        delete from sys_dic
+        where id = #{id}
+    </delete>
+
+    <!-- 通过SysDic的id将SysDic的数据更新到数据库中对应的表,包括值null的数据-->
+    <update id="updateSysDicById" parameterType="com.sily.api.SysDic">
+        update sys_dic set
+            code=#{code}
+            ,create_time=#{createTime}
+            ,remark=#{remark}
+            ,type=#{type}
+            ,parent_type=#{parentType}
+            ,code_text=#{codeText}
+            ,create_by=#{createBy}
+            ,sort_no=#{sortNo}
+            ,edit_able=#{editAble}
+            ,update_time=#{updateTime}
+            ,enable=#{enable}
+            ,parent_code=#{parentCode}
+            ,update_by=#{updateBy}
+        where id=#{id}
+    </update>
+
+    <!-- 通过SysDic的id将SysDic中属性值不为null的数据更新到数据库对应的表中-->
+    <update id="updateNonEmptySysDicById" parameterType="com.sily.api.SysDic">
+        update sys_dic
+        <set>
+            <if test="code != null">
+                code=#{code},
+            </if>
+            <if test="createTime != null">
+                create_time=#{createTime},
+            </if>
+            <if test="remark != null">
+                remark=#{remark},
+            </if>
+            <if test="type != null">
+                type=#{type},
+            </if>
+            <if test="parentType != null">
+                parent_type=#{parentType},
+            </if>
+            <if test="codeText != null">
+                code_text=#{codeText},
+            </if>
+            <if test="createBy != null">
+                create_by=#{createBy},
+            </if>
+            <if test="sortNo != null">
+                sort_no=#{sortNo},
+            </if>
+            <if test="editAble != null">
+                edit_able=#{editAble},
+            </if>
+            <if test="updateTime != null">
+                update_time=#{updateTime},
+            </if>
+            <if test="enable != null">
+                enable=#{enable},
+            </if>
+            <if test="parentCode != null">
+                parent_code=#{parentCode},
+            </if>
+            <if test="updateBy != null">
+                update_by=#{updateBy},
+            </if>
+        </set>
+        where id=#{id}
+    </update>
+
+</mapper>

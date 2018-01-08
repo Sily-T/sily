@@ -10,7 +10,7 @@
     </insert>
 
     <!-- 通过SysUser的id将SysUser的数据更新到数据库中对应的表,包括值null的数据-->
-    <update id="updateSysUserById" parameterType="SysUser">
+    <update id="updateSysUserByUserId" parameterType="SysUser">
         update sys_user set
         qq=#{qq}
         ,birthday=#{birthday}

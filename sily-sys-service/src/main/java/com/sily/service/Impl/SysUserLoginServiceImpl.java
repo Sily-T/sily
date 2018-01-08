@@ -1,8 +1,12 @@
 package com.sily.service.Impl;
 
 import com.sily.api.SysUser;
+import com.sily.api.SysUserCustom;
+import com.sily.api.SysUserRole;
 import com.sily.dao.SysLoginDao;
+import com.sily.dao.SysRoleDao;
 import com.sily.dao.SysUserDao;
+import com.sily.dao.SysUserRoleDao;
 import com.sily.service.SysUserLoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,6 +27,8 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
     private SysLoginDao sysLoginDao;
     @Autowired
     private SysUserDao sysUserDao;
+    @Autowired
+    private SysUserRoleDao sysUserRoleDao;
 
     /**
      * 用户登录
@@ -93,8 +99,17 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
      * 根据id更新用户
      */
     @Override
-    public Integer updateSysUserById(SysUser sysUser){
-        Integer integer = sysLoginDao.updateSysUserById(sysUser);
+    public Integer updateSysUserById(SysUserCustom sysUserCustom){
+        Integer integer =sysUserDao.updateSysUserById(sysUserCustom);
+
+        SysUserRole sysUserRole = sysUserRoleDao.selectSysUserRoleByUserId(sysUserCustom.getId());
+        //判断Sys_User_Role表是否存在用户对应的角色，并且对应的角色roleId是否和现在选择的角色是否相同，如果不存在就添加到Sys_User_Role表，如果存在更新(无论是否用户角色对应是否相同)
+        if(sysUserRole!=null && !sysUserRole.getRoleId().equals(sysUserCustom.getRoleId())){
+            sysUserRoleDao.updateSysUserRoleByUserId(sysUserCustom.getRoleId(),sysUserCustom.getEnable(),sysUserRole.getId());
+        }else {
+            /*sysUserRoleDao.insertSysUserRoleByUserSelectRole(1,sysUserCustom.getId(),sysUserCustom.getRoleId(),sysUserCustom.getEnable(),1);*/
+            sysUserRoleDao.insertSysUserRoleByUserSelectRole(1,sysUserCustom.getId(),sysUserCustom.getRoleId(),1,1);
+        }
         if (integer.equals(1)){
             return integer;
         }

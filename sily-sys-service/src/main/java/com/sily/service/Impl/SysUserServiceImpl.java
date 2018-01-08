@@ -41,10 +41,12 @@ public class SysUserServiceImpl implements SysUserService{
     public int deleteSysUserById(Long id){
         return sysUserDao.deleteSysUserById(id);
     }
-    @Override
+
+/*
     public int updateSysUserById(SysUser enti){
         return sysUserDao.updateSysUserById(enti);
     }
+*/
     @Override
     public int updateNonEmptySysUserById(SysUser enti){
         return sysUserDao.updateNonEmptySysUserById(enti);

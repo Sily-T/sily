@@ -28,5 +28,5 @@ public interface SysLoginDao {
     /**
      * 更新用户信息
      */
-    Integer updateSysUserById(SysUser sysUser);
+    Integer updateSysUserByUserId(SysUser sysUser);
 }

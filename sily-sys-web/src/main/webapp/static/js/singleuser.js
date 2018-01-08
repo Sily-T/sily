@@ -71,7 +71,7 @@ function ajaxUserInfo(jsonUserId) {
         data: JSON.stringify(jsonUserId),
         success: function (result) {
             console.log("success");
-            $('#user-name').val(result.account);
+            $('#user-name').val(result.userName);
             $('#name-pinyin').val(result.namePinyin);
             $('#phone').val(result.phone);
             $('#email').val(result.email);
@@ -89,8 +89,9 @@ function ajaxUserInfo(jsonUserId) {
 }
 //获取该用户修改后的值，并组装承json对象
 function returnUpdateUserInfoJson (userID) {
-    if ($("input[type='radio']:checked").val() == null) {
-        var sex = 0;
+    var sex=$("input[name='sex']:checked").val();
+    if ( sex== null) {
+         sex = 0;
     }
     var jsonUser = {
         "id": userID,
@@ -104,7 +105,7 @@ function returnUpdateUserInfoJson (userID) {
         "birthday": $('#birthday').val(),
         "deptId": $('#dept-id').val(),
         "enable": $("#select option:selected").val(),
-        "userType":$('.checkbox~:checkbox:checked').attr('id')
+        "roleId":$('.checkbox-inline :radio:checked').attr('id')
     };
     return jsonUser
 }
