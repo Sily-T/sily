@@ -13,6 +13,10 @@ public class SysRoleMenu {
     public SysRoleMenu() {
         super();
     }
+    public SysRoleMenu(Long menuId,Long roleId){
+        this.setMenuId(menuId);
+        this.setRoleId(roleId);
+    }
     public SysRoleMenu(Long id,Long createBy,java.util.Date updateTime,java.util.Date createTime,Long roleId,Integer enable,String permission,String remark,Long updateBy,Long menuId) {
         super();
         this.id = id;

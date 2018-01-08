@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sily.dao.SysRoleMenuDao">
     <!-- SysRoleMenu的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_SysRoleMenu_Map" type="com.sily.api.SysRoleMenu">
+    <resultMap id="result_SysRoleMenu_Map" type="SysRoleMenu">
         <id column="id" property="id" />
         <result column="create_by" property="createBy" />
         <result column="update_time" property="updateTime" />
@@ -14,6 +14,7 @@
         <result column="update_by" property="updateBy" />
         <result column="menu_id" property="menuId" />
     </resultMap>
+
 
     <!-- 数据库中表名为:sys_role_menu的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
     <sql id="sys_role_menu_Column">
@@ -28,6 +29,13 @@
         ,sys_role_menu.update_by as update_by
         ,sys_role_menu.menu_id as menu_id
     </sql>
+
+
+
+    <!--2018年1月8日,通过角色的ID获取菜单的CRUD权限-->
+    <!--<select id="getMenuPermissionByRoleId" resultType="" >-->
+
+    <!--</select>-->
 
     <!--获得类名为:SysRoleMenu对应的数据库表的数据总行数 -->
     <select id="getSysRoleMenuRowCount" resultType="java.lang.Long">

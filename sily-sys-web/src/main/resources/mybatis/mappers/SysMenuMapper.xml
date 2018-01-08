@@ -3,22 +3,33 @@
 <mapper namespace="com.sily.dao.SysMenuDao">
     <!-- SysMenu的resultMap,column是给数据库列起的别名,它对应property类的属性-->
     <resultMap id="result_SysMenu_Map" type="com.sily.api.SysMenu">
-        <id column="id" property="id" />
-        <result column="permission_" property="permission" />
-        <result column="expand_status" property="expandStatus" />
-        <result column="create_time" property="createTime" />
-        <result column="menu_type" property="menuType" />
-        <result column="remark" property="remark" />
-        <result column="icon_cls" property="iconCls" />
-        <result column="request_url" property="requestUrl" />
-        <result column="is_show" property="isShow" />
-        <result column="create_by" property="createBy" />
-        <result column="sort_no" property="sortNo" />
-        <result column="update_time" property="updateTime" />
-        <result column="parent_id" property="parentId" />
-        <result column="enable" property="enable" />
-        <result column="menu_name" property="menuName" />
-        <result column="update_by" property="updateBy" />
+        <id column="id" property="id"/>
+        <result column="permission_" property="permission"/>
+        <result column="expand_status" property="expandStatus"/>
+        <result column="create_time" property="createTime"/>
+        <result column="menu_type" property="menuType"/>
+        <result column="remark" property="remark"/>
+        <result column="icon_cls" property="iconCls"/>
+        <result column="request_url" property="requestUrl"/>
+        <result column="is_show" property="isShow"/>
+        <result column="create_by" property="createBy"/>
+        <result column="sort_no" property="sortNo"/>
+        <result column="update_time" property="updateTime"/>
+        <result column="parent_id" property="parentId"/>
+        <result column="enable" property="enable"/>
+        <result column="menu_name" property="menuName"/>
+        <result column="update_by" property="updateBy"/>
+    </resultMap>
+
+    <resultMap id="getMenuByRoleId_resultMap" type="SysMenuVo">
+        <association property="sysMenu" javaType="SysMenu">
+            <id column="menu_id" property="id"/>
+            <result column="menu_name" property="menuName"/>
+            <result column="parent_id" property="parentId"/>
+        </association>
+        <association property="sysRoleMenu" javaType="SysRoleMenu">
+            <id column="role_id" property="id"/>
+        </association>
     </resultMap>
 
     <!-- 数据库中表名为:sys_menu的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
@@ -41,49 +52,70 @@
         ,sys_menu.update_by as update_by
     </sql>
 
+
+    <!--2018年1月8日,通过角色的ID获取菜单-->
+    <select id="getMenuByRoleId" resultMap="getMenuByRoleId_resultMap">
+        SELECT
+            sys_menu.id AS menu_id,
+            sys_menu.menu_name,
+            sys_menu.parent_id,
+            sys_role_menu.role_id
+        FROM
+            sys_menu
+        INNER JOIN sys_role_menu ON sys_role_menu.menu_id = sys_menu.id
+        WHERE
+            sys_role_menu.role_id = #{roleId}
+        AND sys_role_menu. ENABLE = 1
+        GROUP BY
+            sys_menu.menu_name
+        ORDER BY
+            sys_menu.parent_id ASC,
+            menu_id ASC
+    </select>
+
     <!--获得类名为:SysMenu对应的数据库表的数据总行数 -->
     <select id="getSysMenuRowCount" resultType="java.lang.Long">
         select count(id) from sys_menu
     </select>
     <!-- 获得类名为:SysMenu对应数据库中表的数据集合 -->
     <select id="selectSysMenu" resultMap="result_SysMenu_Map">
-        select 
-        <include refid="sys_menu_Column" /> 
+        select
+        <include refid="sys_menu_Column"/>
         from sys_menu
-    </select> 
+    </select>
 
     <!-- 获得一个SysMenu对象,以参数SysMenu对象中不为空的属性作为条件进行查询-->
     <select id="selectSysMenuByObj" parameterType="com.sily.api.SysMenu" resultMap="result_SysMenu_Map">
-        select 
-            <include refid="sys_menu_Column" /> 
+        select
+        <include refid="sys_menu_Column"/>
         from sys_menu
         <where>
-            <if test="updateBy != null "> and sys_menu.update_by = #{updateBy}</if>
-            <if test="menuName != null "> and sys_menu.menu_name = #{menuName}</if>
-            <if test="enable != null "> and sys_menu.enable = #{enable}</if>
-            <if test="parentId != null "> and sys_menu.parent_id = #{parentId}</if>
-            <if test="updateTime != null "> and sys_menu.update_time = #{updateTime}</if>
-            <if test="sortNo != null "> and sys_menu.sort_no = #{sortNo}</if>
-            <if test="createBy != null "> and sys_menu.create_by = #{createBy}</if>
-            <if test="isShow != null "> and sys_menu.is_show = #{isShow}</if>
-            <if test="requestUrl != null "> and sys_menu.request_url = #{requestUrl}</if>
-            <if test="iconCls != null "> and sys_menu.icon_cls = #{iconCls}</if>
-            <if test="remark != null "> and sys_menu.remark = #{remark}</if>
-            <if test="menuType != null "> and sys_menu.menu_type = #{menuType}</if>
-            <if test="createTime != null "> and sys_menu.create_time = #{createTime}</if>
-            <if test="expandStatus != null "> and sys_menu.expand_status = #{expandStatus}</if>
-            <if test="permission != null "> and sys_menu.permission_ = #{permission}</if>
-            <if test="id != null "> and sys_menu.id = #{id}</if>
+            <if test="updateBy != null ">and sys_menu.update_by = #{updateBy}</if>
+            <if test="menuName != null ">and sys_menu.menu_name = #{menuName}</if>
+            <if test="enable != null ">and sys_menu.enable = #{enable}</if>
+            <if test="parentId != null ">and sys_menu.parent_id = #{parentId}</if>
+            <if test="updateTime != null ">and sys_menu.update_time = #{updateTime}</if>
+            <if test="sortNo != null ">and sys_menu.sort_no = #{sortNo}</if>
+            <if test="createBy != null ">and sys_menu.create_by = #{createBy}</if>
+            <if test="isShow != null ">and sys_menu.is_show = #{isShow}</if>
+            <if test="requestUrl != null ">and sys_menu.request_url = #{requestUrl}</if>
+            <if test="iconCls != null ">and sys_menu.icon_cls = #{iconCls}</if>
+            <if test="remark != null ">and sys_menu.remark = #{remark}</if>
+            <if test="menuType != null ">and sys_menu.menu_type = #{menuType}</if>
+            <if test="createTime != null ">and sys_menu.create_time = #{createTime}</if>
+            <if test="expandStatus != null ">and sys_menu.expand_status = #{expandStatus}</if>
+            <if test="permission != null ">and sys_menu.permission_ = #{permission}</if>
+            <if test="id != null ">and sys_menu.id = #{id}</if>
         </where>
-    </select> 
+    </select>
 
     <!-- 通过SysMenu的id获得对应数据库中表的数据对象-->
     <select id="selectSysMenuById" parameterType="java.lang.Long" resultMap="result_SysMenu_Map">
-        select 
-            <include refid="sys_menu_Column" /> 
+        select
+        <include refid="sys_menu_Column"/>
         from sys_menu
         where sys_menu.id = #{id}
-    </select> 
+    </select>
 
     <!-- 将SysMenu插入到对应数据库的表中,包括属性值为null的数据-->
 
@@ -114,29 +146,31 @@
             <if test="updateBy != null">update_by,</if>
         </trim>
         <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="id != null"> #{id},</if>
-            <if test="permission != null"> #{permission},</if>
-            <if test="expandStatus != null"> #{expandStatus},</if>
-            <if test="createTime != null"> #{createTime},</if>
-            <if test="menuType != null"> #{menuType},</if>
-            <if test="remark != null"> #{remark},</if>
-            <if test="iconCls != null"> #{iconCls},</if>
-            <if test="requestUrl != null"> #{requestUrl},</if>
-            <if test="isShow != null"> #{isShow},</if>
-            <if test="createBy != null"> #{createBy},</if>
-            <if test="sortNo != null"> #{sortNo},</if>
-            <if test="updateTime != null"> #{updateTime},</if>
-            <if test="parentId != null"> #{parentId},</if>
-            <if test="enable != null"> #{enable},</if>
-            <if test="menuName != null"> #{menuName},</if>
-            <if test="updateBy != null"> #{updateBy},</if>
+            <if test="id != null">#{id},</if>
+            <if test="permission != null">#{permission},</if>
+            <if test="expandStatus != null">#{expandStatus},</if>
+            <if test="createTime != null">#{createTime},</if>
+            <if test="menuType != null">#{menuType},</if>
+            <if test="remark != null">#{remark},</if>
+            <if test="iconCls != null">#{iconCls},</if>
+            <if test="requestUrl != null">#{requestUrl},</if>
+            <if test="isShow != null">#{isShow},</if>
+            <if test="createBy != null">#{createBy},</if>
+            <if test="sortNo != null">#{sortNo},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="parentId != null">#{parentId},</if>
+            <if test="enable != null">#{enable},</if>
+            <if test="menuName != null">#{menuName},</if>
+            <if test="updateBy != null">#{updateBy},</if>
         </trim>
     </insert>
 
     <!-- 将SysMenu批量插入到对应数据库的表中-->
     <insert id="insertSysMenuByBatch" parameterType="ArrayList">
-        insert into sys_menu(id,permission_,expand_status,create_time,menu_type,remark,icon_cls,request_url,is_show,create_by,sort_no,update_time,parent_id,enable,menu_name,update_by) values
-        <foreach collection="list" item="item" index="index" separator="," >
+        insert into
+        sys_menu(id,permission_,expand_status,create_time,menu_type,remark,icon_cls,request_url,is_show,create_by,sort_no,update_time,parent_id,enable,menu_name,update_by)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
             (#{item.id},#{item.permission},#{item.expandStatus},#{item.createTime},#{item.menuType},#{item.remark},#{item.iconCls},#{item.requestUrl},#{item.isShow},#{item.createBy},#{item.sortNo},#{item.updateTime},#{item.parentId},#{item.enable},#{item.menuName},#{item.updateBy})
         </foreach>
     </insert>

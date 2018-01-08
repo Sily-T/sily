@@ -19,6 +19,10 @@ public class SysMenu {
     public SysMenu() {
         super();
     }
+    public SysMenu(String menuName,Long parentId){
+        this.setMenuName(menuName);
+        this.setParentId(parentId);
+    }
     public SysMenu(Long id,String permission,Integer expandStatus,java.util.Date createTime,Integer menuType,String remark,String iconCls,String requestUrl,Integer isShow,Long createBy,Integer sortNo,java.util.Date updateTime,Long parentId,Integer enable,String menuName,Long updateBy) {
         super();
         this.id = id;

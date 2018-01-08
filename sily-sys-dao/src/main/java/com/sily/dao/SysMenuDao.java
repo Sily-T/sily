@@ -1,7 +1,17 @@
 package com.sily.dao;
 import com.sily.api.SysMenu;
+import com.sily.api.SysMenuVo;
+import org.springframework.stereotype.Repository;
+
 import java.util.List;
+@Repository
 public interface SysMenuDao{
+   /**
+	*2018年1月8日,通过角色的ID获取菜单
+    */
+	List<SysMenuVo> getMenuByRoleId(Integer roleId);
+
+
 	/**
 	 * 获得SysMenu数据的总行数
 	 * @return
