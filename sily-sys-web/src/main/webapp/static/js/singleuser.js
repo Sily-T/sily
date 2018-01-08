@@ -11,7 +11,7 @@ $().ready(function () {
     //保存按钮：修改该用户信息
     $('#save').click(function () {
         //获取该用户修改后的值，并组装承json对象
-        var jsonUpdateUser=returnUpdateUserInfoJson();
+        var jsonUpdateUser=returnUpdateUserInfoJson(userID);
         //向后端请求修改用户的信息
         $.ajax({
             type: "POST",
@@ -40,12 +40,18 @@ function ajaxAllRole() {
         success: function (allRole) {
             //生成所有角色dom节点
             for (var i = 0; i < allRole.length; i++) {
-                $('#ol-roles').append("<li>\n" +
-                    "                                <div class='checkbox'>\n" +
-                    "                                    <label>\n" +
-                    "                                        <input id='"+allRole[i].id+"' type='checkbox'> "+allRole[i].roleName+"\n" +
-                    "                                    </label>\n" +
-                    "                                </div>\n" +
+                // $('#ol-roles').append("<li>\n" +
+                //     "                                <div class='checkbox'>\n" +
+                //     "                                    <label>\n" +
+                //     "                                        <input id='"+allRole[i].id+"' type='checkbox'> "+allRole[i].roleName+"\n" +
+                //     "                                    </label>\n" +
+                //     "                                </div>\n" +
+                //     "                            </li>");
+
+                $('#ol-roles').append("         <li>\n" +
+                    "                                <label class='checkbox-inline'>\n" +
+                    "                                    <input type='radio' id='"+allRole[i].id+"' name='role-options' >"+allRole[i].roleName+"\n" +
+                    "                                </label>\n" +
                     "                            </li>");
             }
         },
@@ -82,7 +88,7 @@ function ajaxUserInfo(jsonUserId) {
     });
 }
 //获取该用户修改后的值，并组装承json对象
-function returnUpdateUserInfoJson () {
+function returnUpdateUserInfoJson (userID) {
     if ($("input[type='radio']:checked").val() == null) {
         var sex = 0;
     }
