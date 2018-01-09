@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-01-06 14:09:44
+Date: 2018-01-09 21:11:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -42,5 +42,10 @@ CREATE TABLE `sys_menu` (
 -- ----------------------------
 -- Records of sys_menu
 -- ----------------------------
-INSERT INTO `sys_menu` VALUES ('19', '用户管理', '1', null, '', 'main.sys.user.list', '0', null, '1', '', null, '1', '1', '2018-01-06 12:48:05', '1', '2018-01-06 14:08:14');
+INSERT INTO `sys_menu` VALUES ('1', '系统管理', '2', null, null, '#', '0', '1', '1', 'sys', null, '1', '1', '2018-01-08 15:56:18', '1', '2018-01-09 16:04:22');
+INSERT INTO `sys_menu` VALUES ('2', '用户管理', '1', '1', '', 'main.sys.user.list', '0', '1', '1', 'sys.base.user', null, '1', '1', '2018-01-06 12:48:05', '1', '2018-01-09 16:04:54');
+INSERT INTO `sys_menu` VALUES ('3', '部门管理', '1', '1', '', 'main.sys.dept.list', '0', '2', '1', 'sys.base.dept', null, '1', '1', '2016-06-20 09:16:56', '1', '2018-01-09 16:04:55');
+INSERT INTO `sys_menu` VALUES ('4', '菜单管理', '1', '1', '', 'main.sys.menu.list', '0', '3', '1', 'sys.base.menu', null, '1', '1', '2016-06-20 09:16:56', '1', '2018-01-09 16:04:56');
+INSERT INTO `sys_menu` VALUES ('5', '角色管理', '1', '1', '', 'main.sys.role.list', '0', '4', '1', 'sys.base.role', null, '1', '1', '2016-06-20 09:16:56', '1', '2018-01-09 16:04:57');
+INSERT INTO `sys_menu` VALUES ('6', '字典管理', '1', '1', '', 'main.sys.dic.list', '0', '7', '1', 'sys.base.dic', null, '1', '1', '2016-06-20 09:16:56', '1', '2018-01-09 16:05:26');
 SET FOREIGN_KEY_CHECKS=1;
