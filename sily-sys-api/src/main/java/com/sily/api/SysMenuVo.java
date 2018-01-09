@@ -10,6 +10,7 @@ public class SysMenuVo {
     private SysMenu sysMenu;
 
 
+
     /**
      * 为了系统的可扩展性，对原始生成的po进行扩展
      */

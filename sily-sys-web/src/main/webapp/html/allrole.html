@@ -83,7 +83,7 @@
                     </ul>
                 </li>
                 <li class="">
-                    <a class="" href="#" ><i class="fa fa-lock"></i>权限<i
+                    <a class="" href="#"><i class="fa fa-lock"></i>权限<i
                             class="fa arrow"></i></a>
                     <ul class="nav nav-second-level collapse in ">
                         <li><a href="allrole.html"><i class="fa fa-key"></i>角色管理</a>
@@ -190,17 +190,23 @@
             <!--左侧角色信息-->
             <div class="col-md-5">
                 <div class="panel panel-success">
-                    <div class="panel-heading"><h4><strong>角色信息</strong></h4></div>
+                    <div class="panel-heading"><h4><strong>角色信息</strong></h4><i class="fa fa-exclamation"></i>&nbsp;&nbsp;<small>
+                        建议修改一个角色后立刻保存
+                    </small>
+                    </div>
                     <div class="panel-body">
                         <div class="form-group">
                             <div>
-                                <button class="btn btn-info"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;保存</button>
+                                <button class="btn btn-info"><i class="fa fa-floppy-o"></i>&nbsp;&nbsp;&nbsp;保存操作
+                                </button>
+                                <button class="btn btn-danger"><i class="fa fa-plus-square"></i>&nbsp;&nbsp;&nbsp;新增角色
+                                </button>
                             </div>
                         </div>
                         <div class="form-group">
                             <h4>所有角色：</h4>
                             <select id="role-select" multiple class="form-control">
-                                <option >自定义系统管理员</option>
+                                <option>自定义系统管理员</option>
                                 <option>其他角色</option>
                             </select>
                         </div>
@@ -210,19 +216,26 @@
             <!--右侧授权信息-->
             <div class="col-md-5">
                 <div class="panel panel-success">
-                    <div class="panel-heading"><h4><strong>授权信息</strong></h4></div>
+                    <div class="panel-heading"><h4><strong>授权信息</strong></h4>
+                        <div class="form-group">
+                            <h5>&nbsp;read：<span class="label label-info">查询/可读</span>
+                                &nbsp;add：<span class="label label-info">增加</span>
+                                &nbsp;delete：<span class="label label-info">删除</span>
+                                &nbsp;update：<span class="label label-info">修改</span>
+                                &nbsp;run：<span class="label label-warning">运行</span></h5>
+                        </div>
+                    </div>
                     <div class="panel-body">
-                        <ul id="treeDemo" class="ztree"></ul>
+                            <ul id="treeDemo" class="ztree"></ul>
+                            <h3 id="cust_tip"><small >请点击左侧的角色显示角色信息</small></h3>
 
-                        <!--<ul>-->
-                            <!--<li>-->
-                                <!--<div class="checkbox">-->
-                                    <!--<label>-->
-                                        <!--<input type="checkbox"> 菜单所有-->
-                                    <!--</label>-->
-                                <!--</div>-->
-                            <!--</li>-->
-                        <!--</ul>-->
+                        <!--<div class="col-md-3 col-md-offset-4">-->
+                        <!--<div class="form-group"><h5>read：<span class="label label-info">查询/可读</span></h5></div>-->
+                        <!--<div class="form-group"><h5>add：<span class="label label-info">增加</span></h5></div>-->
+                        <!--<div class="form-group"><h5>delete：<span class="label label-info">删除</span></h5></div>-->
+                        <!--<div class="form-group"><h5>update：<span class="label label-info">修改</span></h5></div>-->
+                        <!--<div class="form-group"><h5>run：<span class="label label-warning">运行</span></h5></div>-->
+                        <!--</div>-->
                     </div>
                 </div>
             </div>

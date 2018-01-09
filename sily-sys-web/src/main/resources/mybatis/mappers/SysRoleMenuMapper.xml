@@ -31,11 +31,17 @@
     </sql>
 
 
-
-    <!--2018年1月8日,通过角色的ID获取菜单的CRUD权限-->
-    <!--<select id="getMenuPermissionByRoleId" resultType="" >-->
-
-    <!--</select>-->
+    <!--2018年1月9日,通过角色的ID获取菜单的CRUD权限-->
+    <select id="getMenuPermissionByRoleId" resultMap="result_SysRoleMenu_Map" >
+        SELECT
+            sys_role_menu.menu_id,
+            sys_role_menu.permission
+        FROM
+            sys_role_menu
+        WHERE
+            sys_role_menu.role_id = #{roleId}
+        AND sys_role_menu. ENABLE = 1
+    </select>
 
     <!--获得类名为:SysRoleMenu对应的数据库表的数据总行数 -->
     <select id="getSysRoleMenuRowCount" resultType="java.lang.Long">

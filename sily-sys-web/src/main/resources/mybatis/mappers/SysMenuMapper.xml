@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sily.dao.SysMenuDao">
     <!-- SysMenu的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_SysMenu_Map" type="com.sily.api.SysMenu">
+    <resultMap id="result_SysMenu_Map" type="SysMenu">
         <id column="id" property="id"/>
         <result column="permission_" property="permission"/>
         <result column="expand_status" property="expandStatus"/>
@@ -61,16 +61,14 @@
             sys_menu.parent_id,
             sys_role_menu.role_id
         FROM
-            sys_menu
-        INNER JOIN sys_role_menu ON sys_role_menu.menu_id = sys_menu.id
+            sys_menu,sys_role_menu
         WHERE
             sys_role_menu.role_id = #{roleId}
         AND sys_role_menu. ENABLE = 1
         GROUP BY
             sys_menu.menu_name
         ORDER BY
-            sys_menu.parent_id ASC,
-            menu_id ASC
+            sys_menu.sort_no ASC
     </select>
 
     <!--获得类名为:SysMenu对应的数据库表的数据总行数 -->
