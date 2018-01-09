@@ -104,8 +104,10 @@ function returnUpdateUserInfoJson (userID) {
         "sex": sex,
         "birthday": $('#birthday').val(),
         "deptId": $('#dept-id').val(),
-        "enable": $("#select option:selected").val(),
+        "enable": $("select option:selected").val()=="启用"?1:0,
         "roleId":$('.checkbox-inline :radio:checked').attr('id')
     };
     return jsonUser
 }
+
+

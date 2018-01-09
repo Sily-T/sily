@@ -1,5 +1,6 @@
 package com.sily.dao;
 import com.sily.api.SysUserRole;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -77,6 +78,6 @@ public interface SysUserRoleDao{
     /**
      * 根据页面用户选择的角色，将user_id、role_id、enable插入，createBy和updateBy暂时设置1
      */
-	int insertSysUserRoleByUserSelectRole(Integer createBy,Long userId,Long roleId,Integer enable ,Integer updateBy);
+	int insertSysUserRoleByUserSelectRole(@Param("createBy") Integer createBy,@Param("userId") Long userId, @Param("roleId") Long roleId,@Param("enable") Integer enable ,@Param("updateBy") Integer updateBy);
 
 }

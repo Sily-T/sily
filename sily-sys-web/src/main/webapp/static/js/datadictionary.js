@@ -10,14 +10,19 @@ $().ready(function () {
         async: true,
         success: function (Dictionary) {
             var isEnable = "启用";
+            var editAble = "读写"
             for (var i = 0;  i < Dictionary.length;i++) {
                 //因为多次使用DictionaryID，先建变量
                 var DictionaryID = Dictionary[i].id;
-                //将isEnable的值转变为文字
+                //将Enable的值转变为文字
                 if (Dictionary[i].enable == 0) {
                     isEnable = "禁用";
                 }
-                $tableFirstTr.append("<tr></tr><td>" + Dictionary[i].id + "</td><td>" + Dictionary[i].type + "</td><td>" + Dictionary[i].code + "</td><td>" + Dictionary[i].codeText + "</td><td>" + Dictionary[i].sex + "</td><td>" + Dictionary[i].phone + "</td><td>" + Dictionary[i].email + "</td><td>"+isEnable+"</td> <td>\n" +
+                //将editAble的值转变为文字
+                if (Dictionary[i].editAble == 0) {
+                    editAble = "只读";
+                }
+                $tableFirstTr.append("<tr><td>" + Dictionary[i].id + "</td><td>" + Dictionary[i].type + "</td><td>" + Dictionary[i].code + "</td><td>" + Dictionary[i].codeText + "</td><td>" + editAble + "</td><td>1<span class='label label-success'>" + isEnable + "</span></td><td>" + Dictionary[i].createBy + "</td><td>"+Dictionary[i].createTime+"</td><td>"+Dictionary[i].updateBy+"</td><td>"+Dictionary[i].updateTime+"</td> <td>\n" +
                     "                        <a href='singleuser.html?" + DictionaryID + "'>\n" +
                     "                            <button class='btn btn-info btn-block'>查看</button>\n" +
                     "                        </a>\n" +

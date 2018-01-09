@@ -108,7 +108,7 @@ public class SysUserLoginServiceImpl implements SysUserLoginService{
             sysUserRoleDao.updateSysUserRoleByUserId(sysUserCustom.getRoleId(),sysUserCustom.getEnable(),sysUserRole.getId());
         }else {
             /*sysUserRoleDao.insertSysUserRoleByUserSelectRole(1,sysUserCustom.getId(),sysUserCustom.getRoleId(),sysUserCustom.getEnable(),1);*/
-            sysUserRoleDao.insertSysUserRoleByUserSelectRole(1,sysUserCustom.getId(),sysUserCustom.getRoleId(),1,1);
+            sysUserRoleDao.insertSysUserRoleByUserSelectRole(1,sysUserCustom.getId(),sysUserCustom.getRoleId(),sysUserCustom.getEnable(),1);
         }
         if (integer.equals(1)){
             return integer;
