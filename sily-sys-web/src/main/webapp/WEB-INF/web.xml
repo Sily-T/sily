@@ -33,11 +33,11 @@
         <url-pattern>*.jpeg</url-pattern>
     </servlet-mapping>
 
-    <listener>
-        <listener-class>
-            org.springframework.web.context.ContextLoaderListener
-        </listener-class>
-    </listener>
+    <!--<listener>-->
+        <!--<listener-class>-->
+            <!--org.springframework.web.context.ContextLoaderListener-->
+        <!--</listener-class>-->
+    <!--</listener>-->
 
     <!--enconding filter-->
     <filter>

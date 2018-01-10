@@ -13,7 +13,7 @@
 </head>
 
 <body>
-<div class="wrapper"><br/>
+<div class="wrapper" id="wrapper"><br/>
     <div class="container">
         <!--logo-->
         <div class="login-icon">
@@ -24,7 +24,7 @@
             </h4>
         </div>
         <div class="login ">
-            <div class="login-screen">
+            <form class="login-screen" method="post" action="/user/login">
                 <div class="has-feedback">
                     <label class="login-field-icon fui-user" for="account"></label>
                     <input type="text" class="form-control login-field" name="account" id="account"
@@ -45,7 +45,7 @@
                 </div>
                 <a class="login-link" href="#">忘记密码?</a>
                 <!--<div class="has-error center"><label class="control-label">{{msg}}</label></div>-->
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -220,6 +220,13 @@
             <artifactId>commons-io</artifactId>
             <version>${commons-io.version}</version>
         </dependency>
+<!--servlet-->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>4.0.0</version>
+            <scope>provided</scope>
+        </dependency>
         <!--&lt;!&ndash;shiro包&ndash;&gt;-->
         <!--&lt;!&ndash; https://mvnrepository.com/artifact/org.apache.shiro/shiro-all &ndash;&gt;-->
         <!--<dependency>-->

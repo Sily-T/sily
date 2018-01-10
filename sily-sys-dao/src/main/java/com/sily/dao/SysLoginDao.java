@@ -18,7 +18,7 @@ public interface SysLoginDao {
      * @param account 登录用户名
      * @return
      */
-    SysUser selectByLoginName(String account)throws Exception;
+    SysUser selectByLoginName(String account);
 
     /**
      * 注册用户

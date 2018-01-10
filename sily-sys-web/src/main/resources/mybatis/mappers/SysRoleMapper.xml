@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sily.dao.SysRoleDao">
     <!-- SysRole的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_SysRole_Map" type="com.sily.api.SysRole">
+    <resultMap id="result_SysRole_Map" type="SysRole">
         <id column="id" property="id" />
         <result column="role_name" property="roleName" />
         <result column="create_by" property="createBy" />
@@ -28,6 +28,17 @@
         ,sys_role.dept_id as dept_id
         ,sys_role.update_by as update_by
     </sql>
+
+    <!--根据用户Id获得SysRole-->
+    <select id="selectRoleByUserId" resultMap="result_SysRole_Map" >
+        SELECT
+            sys_role.role_name
+        FROM
+            sys_user_role
+        INNER JOIN sys_role ON sys_user_role.role_id = sys_role.id
+        WHERE
+            sys_user_role.user_id = #{userId}
+    </select>
 
     <!--获得类名为:SysRole对应的数据库表的数据总行数 -->
     <select id="getSysRoleRowCount" resultType="java.lang.Long">
