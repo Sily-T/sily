@@ -2,14 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>数据字典</title>
+    <title>Sily数据图展示</title>
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap.css">
+    <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/animate.css">
     <link href="https://cdn.bootcss.com/metisMenu/2.7.1/metisMenu.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/font/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
-    <link rel="stylesheet" href="../static/js/plugins/ztree/zTreeStyle.css">
 
 
 
@@ -186,117 +186,19 @@
                 <!--</div>-->
             </nav>
         </div>
+        <!--可视化数据展示-->
         <div class="row">
-            <div class="col-lg-5">
-                <div class="page-header">
-                    <h3><strong>数据字典</strong></h3>
-                </div>
-            </div>
-        </div>
+            <div class="col-md-5" id="chart-sex"  style="height:800px;"></div>
+            <div class="col-md-5" id="chart-dept"  style="height:800px;"></div>
 
-        <!--<div class="col-lg-5">-->
-        <div class="row">
-            <table id="user-list" class="table table-bordered table-hover text-center">
-                <tr class="warning ">
-                    <td><strong>序号</strong></td>
-                    <td><strong>类型</strong></td>
-                    <td><strong>指令</strong></td>
-                    <td><strong>指令文本</strong></td>
-                    <td><strong>编辑状态</strong></td>
-                    <td><strong>启用状态</strong></td>
-                    <td colspan="2"><strong>创建人及时间</strong></td>
-                    <td colspan="2"><strong>最后更新人及时间</strong></td>
-                    <td colspan="3"><strong>操作</strong></td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>SEX</td>
-                    <td>0</td>
-                    <td>未知</td>
-                    <td>只读</td>
-                    <td><span class="label label-success">启用</span></td>
-                    <td>Amy</td>
-                    <td>2018-01-08 18:04:13</td>
-                    <td>Amy</td>
-                    <td>2018-01-08 18:04:13</td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-info btn-block">查看</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-warning btn-block">编辑</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-danger btn-block">删除</button>
-                        </a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>SEX</td>
-                    <td>1</td>
-                    <td>男</td>
-                    <td>只读</td>
-                    <td><span class="label label-danger">禁用</span></td>
-                    <td>Amy</td>
-                    <td>2018-01-08 18:04:13</td>
-                    <td>Amy</td>
-                    <td>2018-01-08 18:04:13</td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-info btn-block">查看</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-warning btn-block">编辑</button>
-                        </a>
-                    </td>
-                    <td>
-                        <a href="singleuser.html">
-                            <button class="btn btn-danger btn-block">删除</button>
-                        </a>
-                    </td>
-                </tr>
-            </table>
         </div>
         <!--</div>-->
-        <div class="row" style="text-align: center">
-            <nav>
-                <ul class="pagination">
-                    <li>
-                        <a href="#">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    <li><a href="#">1</a></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li>
-                        <a href="#">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
     </div>
-
-
 </div>
-<!--</div>-->
-</div>
-</div>
-
 <script src="../static/js/jquery-3.2.1.min.js"></script>
 <script src="../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-
+<script src="../static/js/plugins/echarts.js"></script>
+<script src="../static/js/dataVis.js"></script>
 <!--手风琴-->
 
 <script src="https://cdn.bootcss.com/metisMenu/2.7.1/metisMenu.js"></script>
@@ -304,6 +206,5 @@
 <!--滚动条-->
 <script src="../static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../static/js/index.js"></script>
-<script src="../static/js/datadictionary.js"></script>
 </body>
 </html>
