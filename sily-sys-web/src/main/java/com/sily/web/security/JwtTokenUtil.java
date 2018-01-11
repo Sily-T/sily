@@ -64,7 +64,8 @@ public class JwtTokenUtil implements Serializable {
     }
 
     /**
-     * 解析过程，利用 jjwt 提供的parser传入秘钥，然后就可以解析token了。
+     * 解析过程，利用 jjwt 提供的parser传入秘钥，然后就可以解析token了。此处或许应该throws AuthenticationException，因为此处
+     * 可能造成各种异常，而要分开处理
      */
     private Claims getClaimsFromToken(String token) {
         Claims claims;

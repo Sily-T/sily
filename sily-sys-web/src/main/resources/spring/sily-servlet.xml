@@ -42,9 +42,23 @@
             com.sily.dao"
     />
     <!-- 激活组件扫描功能,扫描aop的相关组件组件 -->
-    <!--<context:component-scan base-package="com.instrantes.aop"/>-->
     <!-- 启动对@AspectJ注解的支持,使用cglib而不是jdk的来生成代理方法 AOP可以拦截到Controller -->
     <aop:aspectj-autoproxy proxy-target-class="true" />
+
+    <bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <list>
+                <value>classpath:/config/*.properties</value>
+                <value> classpath:jdbc.properties</value>
+            </list>
+        </property>
+    </bean>
+    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+        <property name="properties" ref="configProperties" />
+    </bean>
+
+
+
 
     <!-- 静态资源 -->
     <mvc:resources location="/static/" mapping="/static/**"/>
