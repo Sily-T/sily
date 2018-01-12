@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sily.dao.SysUserDao">
     <!-- SysUser的resultMap,column是给数据库列起的别名,它对应property类的属性-->
-    <resultMap id="result_SysUser_Map" type="com.sily.api.SysUser">
+    <resultMap id="result_SysUser_Map" type="SysUser">
         <id column="id" property="id" />
         <result column="qq" property="qq" />
         <result column="birthday" property="birthday" />
@@ -56,7 +56,19 @@
         ,sys_user.account as account
         ,sys_user.email as email
     </sql>
-
+    <!--根据用户账号查找用户，目前用于token功能的需要-->
+    <select id="selectSysUserByAccount"  resultMap="result_SysUser_Map" >
+        SELECT
+            sys_user.account,
+            sys_user.`password`,
+            sys_user.id,
+            sys_user.email,
+            sys_user.update_time
+        FROM
+            sys_user
+        WHERE
+            sys_user.account = #{account}
+    </select>
     <!--获得类名为:SysUser对应的数据库表的数据总行数 -->
     <select id="getSysUserRowCount" resultType="java.lang.Long">
         select count(*) from sys_user
@@ -110,10 +122,10 @@
         where sys_user.id = #{id}
     </select> 
 
-    <!-- 将SysUser插入到对应数据库的表中,包括属性值为null的数据-->
+    <!-- 将SysUser插入到对应数据库的表中,包括属性值为null的数据，此处返回自增id-->
 
-    <insert id="insertSysUser" parameterType="com.sily.api.SysUser">
-        insert into sys_user(id,qq,birthday,name_pinyin,address,create_time,user_name,sex,id_card,wei_xin,remark,avatar,staff_no,create_by,password,update_time,user_type,phone,enable,position,dept_id,update_by,account,email) 
+    <insert id="insertSysUser" parameterType="SysUser" useGeneratedKeys="true" keyProperty="userID">
+        insert into sys_user(id,qq,birthday,name_pinyin,address,create_time,user_name,sex,id_card,wei_xin,remark,avatar,staff_no,create_by,password,update_time,user_type,phone,enable,position,dept_id,update_by,account,email)
         values(#{id},#{qq},#{birthday},#{namePinyin},#{address},#{createTime},#{userName},#{sex},#{idCard},#{weiXin},#{remark},#{avatar},#{staffNo},#{createBy},#{password},#{updateTime},#{userType},#{phone},#{enable},#{position},#{deptId},#{updateBy},#{account},#{email})
     </insert>
 

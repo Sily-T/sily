@@ -1,10 +1,10 @@
 $(document).ready(function () {
     $('#btn-login').click(function () {
-        var account = $('#account').val();
+        var username = $('#username').val();
         var password = $('#password').val();
-        var sysUser = {"account": account, "password": password};
+        var sysUser = {"username": username, "password": password};
 
-        if (account == null || account == "") {
+        if (username == null || username == "") {
             alert("用户名不能为空！");
             return;
         }
@@ -13,6 +13,19 @@ $(document).ready(function () {
             return;
         }
         console.log(JSON.stringify(sysUser));
+        $.ajax({
+            type: "POST",
+            contentType: "application/json;charset=utf-8",
+            url: "auth",
+            async:true,
+            data: JSON.stringify(sysUser),
+            success: function (result) {
+                console.log("success");
+            },
+            error: function (result) {
+                console.log("fail");
+            }
+        })
         // $.ajax({
         //     type: "POST",
         //     contentType: "application/json;charset=utf-8",

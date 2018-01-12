@@ -1,4 +1,4 @@
-package com.sily.service;
+package com.sily.web.security;
 
 import com.sily.api.SysRole;
 import com.sily.api.SysUser;
@@ -24,7 +24,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     private SysRoleDao sysRoleDao;
 
     @Override
-    public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
         SysUser sysUser = sysLoginDao.selectByLoginName("admin");
         if (sysUser == null) {
@@ -36,15 +36,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         System.out.println(sysRole.getRoleName());
         authorities.add(new SimpleGrantedAuthority(sysRole.getRoleName()));
         System.out.println("authorities:" + authorities);
-
         return new User(sysUser.getAccount(), sysUser.getPassword(), authorities);
-//                psUser.getUserIsDelete().equals("N"), true, true, true, authorities);
-
-//
-
-//        org.springframework.security.core.userdetails.User authUser = new
-//                org.springframework.security.core.userdetails.User(psUser.getUserName(),psUser.getUserPassword(),psUser.getUserRole());
-//        return authUser;
     }
 
     private List<SysRole> getGrantedAuthorities(SysRole ysRole) {
