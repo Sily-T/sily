@@ -11,6 +11,7 @@ import java.util.Date;
  * @date 2017年12月27日
  */
 public class SysUser {
+
     private Long id;
     /**
      * QQ
@@ -89,6 +90,16 @@ public class SysUser {
      * 邮箱
      */
     private String email;
+//此处为token处提供构造器
+    public  SysUser (Long id,String account,String password,String email,java.util.Date updateTime) {
+        this.id = id;
+        this.account = account;
+        this.password = password;
+        this.email = email;
+        this.updateTime=updateTime;
+    }
+
+
 
     public Long getId() {
         return id;

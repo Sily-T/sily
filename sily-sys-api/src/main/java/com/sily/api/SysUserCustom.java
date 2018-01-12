@@ -1,5 +1,7 @@
 package com.sily.api;
 
+import java.util.Date;
+
 /**
  * @Author:
  * @Version: V 1.0
@@ -13,6 +15,10 @@ public class SysUserCustom extends SysUser{
      * 添加用户信息的扩展属性
      */
     private Long roleId;
+
+    public SysUserCustom(Long id, String account, String password, String email, Date updateTime) {
+        super(id, account, password, email, updateTime);
+    }
 
     public Long getRoleId() {
         return roleId;

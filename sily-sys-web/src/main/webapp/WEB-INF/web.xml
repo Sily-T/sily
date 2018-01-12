@@ -10,15 +10,15 @@
         <param-value>classpath:spring/applicationContext*.xml</param-value>
     </context-param>
 
-    <context-param>
-        <param-name>log4jConfiguration</param-name>
-        <param-value>classpath:log/log4j2.xml</param-value>
-    </context-param>
+    <!--<context-param>-->
+        <!--<param-name>log4jConfiguration</param-name>-->
+        <!--<param-value>classpath:log/log4j2.xml</param-value>-->
+    <!--</context-param>-->
 
-    <!-- log4j2 -->
-    <listener>
-        <listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>
-    </listener>
+    <!--&lt;!&ndash; log4j2 &ndash;&gt;-->
+    <!--<listener>-->
+        <!--<listener-class>org.apache.logging.log4j.web.Log4jServletContextListener</listener-class>-->
+    <!--</listener>-->
 
     <!--<listener>-->
         <!--<listener-class>com.instrantes.netty.NettyListener</listener-class>-->
@@ -53,18 +53,18 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
     <!-- log4j2 -->
-    <filter>
-        <filter-name>log4jServletFilter</filter-name>
-        <filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>
-    </filter>
-    <filter-mapping>
-        <filter-name>log4jServletFilter</filter-name>
-        <url-pattern>/*</url-pattern>
-        <dispatcher>REQUEST</dispatcher>
-        <dispatcher>FORWARD</dispatcher>
-        <dispatcher>INCLUDE</dispatcher>
-        <dispatcher>ERROR</dispatcher>
-    </filter-mapping>
+    <!--<filter>-->
+        <!--<filter-name>log4jServletFilter</filter-name>-->
+        <!--<filter-class>org.apache.logging.log4j.web.Log4jServletFilter</filter-class>-->
+    <!--</filter>-->
+    <!--<filter-mapping>-->
+        <!--<filter-name>log4jServletFilter</filter-name>-->
+        <!--<url-pattern>/*</url-pattern>-->
+        <!--<dispatcher>REQUEST</dispatcher>-->
+        <!--<dispatcher>FORWARD</dispatcher>-->
+        <!--<dispatcher>INCLUDE</dispatcher>-->
+        <!--<dispatcher>ERROR</dispatcher>-->
+    <!--</filter-mapping>-->
     <!-- Spring MVC servlet -->
     <servlet>
         <servlet-name>sily</servlet-name>
