@@ -89,7 +89,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 ).permitAll()
                 .and()
                 .authorizeRequests()
-                .antMatchers("/html/login*").permitAll();
+                .antMatchers("auth").permitAll();
 //        此处暂时注释,因为把静态资源阻止了
 //                .anyRequest().authenticated();
 
@@ -99,8 +99,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         // 禁用缓存
         http.headers().cacheControl();
-
-
     }
 
     /**

@@ -30,15 +30,15 @@
     </sql>
 
     <!--根据用户Id获得SysRole-->
-    <select id="selectRoleByUserId" resultMap="result_SysRole_Map" >
-        SELECT
-            sys_role.role_name
-        FROM
-            sys_user_role
-        INNER JOIN sys_role ON sys_user_role.role_id = sys_role.id
-        WHERE
-            sys_user_role.user_id = #{userId}
-    </select>
+    <!--<select id="selectRoleByUserId" resultMap="result_SysRole_Map" >-->
+        <!--SELECT-->
+            <!--sys_role.role_name-->
+        <!--FROM-->
+            <!--sys_user_role-->
+        <!--INNER JOIN sys_role ON sys_user_role.role_id = sys_role.id-->
+        <!--WHERE-->
+            <!--sys_user_role.user_id = #{userId}-->
+    <!--</select>-->
 
     <!--获得类名为:SysRole对应的数据库表的数据总行数 -->
     <select id="getSysRoleRowCount" resultType="java.lang.Long">

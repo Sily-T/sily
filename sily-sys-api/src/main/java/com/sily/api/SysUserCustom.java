@@ -16,9 +16,9 @@ public class SysUserCustom extends SysUser{
      */
     private Long roleId;
 
-    public SysUserCustom(Long id, String account, String password, String email, Date updateTime) {
-        super(id, account, password, email, updateTime);
-    }
+//    public SysUserCustom(Long id, String account, String password, String email, Date updateTime) {
+//        super(id, account, password, email, updateTime);
+//    }
 
     public Long getRoleId() {
         return roleId;

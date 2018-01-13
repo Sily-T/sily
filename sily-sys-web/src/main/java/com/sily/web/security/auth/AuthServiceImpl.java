@@ -1,25 +1,40 @@
 package com.sily.web.security.auth;
 
+import com.sily.api.SysRole;
 import com.sily.api.SysUser;
+import com.sily.api.SysUserRole;
+import com.sily.api.SysUserRoleVo;
+import com.sily.dao.SysLoginDao;
+import com.sily.dao.SysRoleDao;
 import com.sily.dao.SysUserDao;
+import com.sily.dao.SysUserRoleDao;
 import com.sily.web.security.JwtTokenUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.management.relation.Role;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static java.util.Arrays.asList;
 
 @Service
 public class AuthServiceImpl implements AuthService {
+    @Autowired
+    private SysLoginDao sysLoginDao;
+    @Autowired
+    private SysUserRoleDao sysUserRoleDao;
 
     private AuthenticationManager authenticationManager;
     private UserDetailsService userDetailsService;
@@ -55,7 +70,7 @@ public class AuthServiceImpl implements AuthService {
         if (sysUserDao.selectSysUserByAccount(account) == null) {
             return null;
         }
-        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(5);
         final String rawPassword = userToAdd.getPassword();
         userToAdd.setPassword(encoder.encode(rawPassword));
         userToAdd.setUpdateTime(new Date());
@@ -70,7 +85,12 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public String login(String username, String password) {
-        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password);
+        SysUser sysUser = sysLoginDao.selectByLoginName(username);
+        SysRole sysRole = sysUserRoleDao.selectRoleByUserId(sysUser.getId());
+        List<GrantedAuthority> authorities = new ArrayList<>();
+        authorities.add(new SimpleGrantedAuthority(sysRole.getRoleName()));
+        System.out.println("login:"+password);
+        UsernamePasswordAuthenticationToken upToken = new UsernamePasswordAuthenticationToken(username, password,authorities);
         // Perform the security
         final Authentication authentication = authenticationManager.authenticate(upToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);

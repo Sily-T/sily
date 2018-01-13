@@ -14,6 +14,10 @@
         <result column="update_by" property="updateBy" />
     </resultMap>
 
+    <!--根据用户Id获得SysRole-->
+    <resultMap id="selectRoleByUserId_resultMap" type="SysRole">
+            <result column="role_name" property="roleName" />
+    </resultMap>
     <!-- 数据库中表名为:sys_user_role的列名,as前是数据库的列明,as后是列的别名用于映射成实体类中的属性,需要注意的是别名必须与resultMap中的column别名一致 -->
     <sql id="sys_user_role_Column">
         sys_user_role.id as id
@@ -26,6 +30,17 @@
         ,sys_user_role.remark as remark
         ,sys_user_role.update_by as update_by
     </sql>
+
+    <!--根据用户Id获得SysRole-->
+    <select id="selectRoleByUserId" resultMap="selectRoleByUserId_resultMap" >
+        SELECT
+        sys_role.role_name
+        FROM
+        sys_user_role
+        INNER JOIN sys_role ON sys_user_role.role_id = sys_role.id
+        WHERE
+        sys_user_role.user_id = #{userId}
+    </select>
 
     <!--获得类名为:SysUserRole对应的数据库表的数据总行数 -->
     <select id="getSysUserRoleRowCount" resultType="java.lang.Long">

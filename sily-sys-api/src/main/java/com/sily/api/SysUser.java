@@ -91,13 +91,13 @@ public class SysUser {
      */
     private String email;
 //此处为token处提供构造器
-    public  SysUser (Long id,String account,String password,String email,java.util.Date updateTime) {
-        this.id = id;
-        this.account = account;
-        this.password = password;
-        this.email = email;
-        this.updateTime=updateTime;
-    }
+//    public  SysUser (Long id,String account,String password,String email,java.util.Date updateTime) {
+//        this.id = id;
+//        this.account = account;
+//        this.password = password;
+//        this.email = email;
+//        this.updateTime=updateTime;
+//    }
 
 
 

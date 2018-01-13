@@ -7,14 +7,6 @@ import java.util.List;
 
 @Repository
 public interface SysRoleDao {
-    /**
-     * 根据用户Id获得SysRole
-     *
-     * @param userId 用户ID
-     * @return com.sily.api.SysRole
-     * Date: 2018/1/10
-     */
-    SysRole selectRoleByUserId(Long userId);
 
 
     /**

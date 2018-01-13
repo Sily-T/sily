@@ -1,11 +1,23 @@
 package com.sily.dao;
+import com.sily.api.SysRole;
 import com.sily.api.SysUserRole;
+import com.sily.api.SysUserRoleVo;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 @Repository
 public interface SysUserRoleDao{
+
+	/**
+	 * 根据用户Id获得SysRole
+	 *
+	 * @param userId 用户ID
+	 * @return com.sily.api.SysRole
+	 * Date: 2018/1/10
+	 */
+	SysRole selectRoleByUserId(Long userId);
+
 	/**
 	 * 获得SysUserRole数据的总行数
 	 * @return

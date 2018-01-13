@@ -2,8 +2,10 @@ package com.sily.web.security;
 
 import com.sily.api.SysRole;
 import com.sily.api.SysUser;
+import com.sily.api.SysUserRoleVo;
 import com.sily.dao.SysLoginDao;
 import com.sily.dao.SysRoleDao;
+import com.sily.dao.SysUserRoleDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,20 +23,21 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Autowired
     private SysLoginDao sysLoginDao;
     @Autowired
-    private SysRoleDao sysRoleDao;
+    private SysUserRoleDao sysUserRoleDao;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        SysUser sysUser = sysLoginDao.selectByLoginName("admin");
+        SysUser sysUser = sysLoginDao.selectByLoginName(username);
+
         if (sysUser == null) {
             System.out.println("用户不存在");
             throw new UsernameNotFoundException("没有找到该用户名");
         }
-        SysRole sysRole = sysRoleDao.selectRoleByUserId(sysUser.getId());
+        SysRole sysRole = sysUserRoleDao.selectRoleByUserId(sysUser.getId());
         List<GrantedAuthority> authorities = new ArrayList<>();
-        System.out.println(sysRole.getRoleName());
         authorities.add(new SimpleGrantedAuthority(sysRole.getRoleName()));
+//        System.out.println("UserDetails:"+sysUser.getPassword());
         System.out.println("authorities:" + authorities);
         return new User(sysUser.getAccount(), sysUser.getPassword(), authorities);
     }
