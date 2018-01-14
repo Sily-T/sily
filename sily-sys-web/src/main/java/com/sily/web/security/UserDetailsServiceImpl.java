@@ -37,7 +37,6 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         SysRole sysRole = sysUserRoleDao.selectRoleByUserId(sysUser.getId());
         List<GrantedAuthority> authorities = new ArrayList<>();
         authorities.add(new SimpleGrantedAuthority(sysRole.getRoleName()));
-//        System.out.println("UserDetails:"+sysUser.getPassword());
         System.out.println("authorities:" + authorities);
         return new User(sysUser.getAccount(), sysUser.getPassword(), authorities);
     }

@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : ss
-Source Server Version : 50719
+Source Server         : localhost_
+Source Server Version : 50718
 Source Host           : localhost:3306
 Source Database       : sily
 
 Target Server Type    : MYSQL
-Target Server Version : 50719
+Target Server Version : 50718
 File Encoding         : 65001
 
-Date: 2018-01-10 14:00:32
+Date: 2018-01-15 07:55:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -51,8 +51,7 @@ CREATE TABLE `sys_user` (
 -- ----------------------------
 -- Records of sys_user
 -- ----------------------------
-INSERT INTO `sys_user` VALUES ('1', 'admin', '$2a$05$baP5xNaDvSHNOtXK35g96.Wb9c0EbyqgxlCh5bhJgYTCnHzdec4v2', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-04 20:18:11', null, '2018-01-10 12:02:09', null);
-INSERT INTO `sys_user` VALUES ('2', 'amy', '$2a$05$baP5xNaDvSHNOtXK35g96.Wb9c0EbyqgxlCh5bhJgYTCnHzdec4v2', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-05 15:47:26', null, '2018-01-10 14:00:23', null);
+INSERT INTO `sys_user` VALUES ('1', 'admin', 'admin', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-04 20:18:11', null, '2018-01-12 22:01:41', null);
+INSERT INTO `sys_user` VALUES ('2', 'amy', '$2a$05$IgucdWn8tR5pqk2GN7kJNeCocycJlPYSh5pKpmxHEqsTcfSJcrgJC', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-05 15:47:26', null, '2018-01-12 23:54:03', null);
 INSERT INTO `sys_user` VALUES ('4', 'ww', '$2a$05$baP5xNaDvSHNOtXK35g96.Wb9c0EbyqgxlCh5bhJgYTCnHzdec4v2', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-05 15:49:31', null, '2018-01-10 14:00:24', null);
 INSERT INTO `sys_user` VALUES ('5', 'yy', '$2a$05$baP5xNaDvSHNOtXK35g96.Wb9c0EbyqgxlCh5bhJgYTCnHzdec4v2', '1', null, null, '0', null, null, null, null, null, null, null, null, null, null, null, '1', null, '2018-01-05 15:52:20', null, '2018-01-10 14:00:25', null);
-SET FOREIGN_KEY_CHECKS=1;
