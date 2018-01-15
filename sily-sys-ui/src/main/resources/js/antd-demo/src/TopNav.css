@@ -1,0 +1,13 @@
+@import '~antd/dist/antd.css';
+/*.App {*/
+  /*text-align: center;*/
+/*}*/
+.top-nav{
+  /*margin: 10px auto;*/
+  display: flex;
+  /*position: relative;*/
+}
+.top-nav-right{
+  /*flex: 1;*/
+  margin-left: 1000px;
+}
