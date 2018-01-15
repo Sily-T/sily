@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './TopNav.css';
 import { Input,Menu, Icon } from 'antd';
+// import TopNav from './TopNav';
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
 const Search = Input.Search;
@@ -46,5 +47,5 @@ class TopNav extends Component {
     }
 }
 
-
+// ReactDOM.render(<TopNav />, div);
 export default TopNav;

@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import './LeftNav.css';
 import './font-awesome-4.7.0/css/font-awesome.css';
 import {Menu, Icon} from 'antd';
+import Autoset from './Autoset';
 
 const SubMenu = Menu.SubMenu;
 const MenuItemGroup = Menu.ItemGroup;
@@ -13,6 +14,7 @@ class LeftNav extends Component {
 
     render() {
         return (
+            <Autoset />,
             <Menu
                 onClick={this.handleClick}
                 style={{width: 256}}
