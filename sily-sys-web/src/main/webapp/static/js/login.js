@@ -12,11 +12,11 @@ $(document).ready(function () {
             alert("密码不能为空！");
             return;
         }
-        var header={
+        var header = {
             "typ": "JWT",
             "alg": "HS256"
         }
-        var payload={
+        var payload = {
             "sub": "1234567890",
             "name": "admin"
         }
@@ -28,7 +28,7 @@ $(document).ready(function () {
         $.ajax({
             type: "POST",
             url: "auth",
-            async:true,
+            async: true,
             contentType: "application/json;charset=utf-8",
             // headers: {
             //     'Authorization': 'Bearer ' + token,
@@ -37,6 +37,9 @@ $(document).ready(function () {
             data: JSON.stringify(sysUser),
             success: function (result) {
                 console.log("success");
+                console.log(result);
+                localStorage.setItem("token", result);
+                window.location.href = "/react/index.html";
             },
             error: function (result) {
                 console.log("fail");
@@ -51,7 +54,7 @@ $(document).ready(function () {
         //     success: function (result) {
         //         console.log("success");
         //             console.log(result.account);
-        //             window.location.href = "/html/index.html";
+        //             window.location.href = "/html/index2.html";
         //     },
         //     error: function (result) {
         //         console.log("fail");

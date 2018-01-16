@@ -27,9 +27,6 @@ class Autoset extends React.Component {
                 <Avatar style={{ backgroundColor: this.state.color, verticalAlign: 'middle' }} size="large">
                     {this.state.user}
                 </Avatar>
-                <Button size="small" style={{ marginLeft: 16, verticalAlign: 'middle' }} onClick={this.changeUser}>
-                    Change
-                </Button>
             </div>
         );
     }

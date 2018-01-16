@@ -4,10 +4,10 @@
 /*}*/
 .top-nav{
   /*margin: 10px auto;*/
-  display: flex;
+  /*display: flex;*/
   /*position: relative;*/
 }
 .top-nav-right{
-  /*flex: 1;*/
-  margin-left: 1000px;
+  flex: 1;
+  /*margin-left: 1000px;*/
 }
