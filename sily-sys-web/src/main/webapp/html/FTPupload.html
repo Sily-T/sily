@@ -6,11 +6,11 @@
     <link rel="shortcut icon" href="../static/img/logo1.ico">
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap-theme.css">
     <link rel="stylesheet" href="../static/bootstrap-3.3.7-dist/css/bootstrap.css">
-    <link rel="stylesheet" href="../static/css/login.css">
     <link rel="stylesheet" href="../static/css/animate.css">
     <link href="https://cdn.bootcss.com/metisMenu/2.7.1/metisMenu.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../static/css/font/font-awesome-4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../static/css/style.css">
+
 
 
 </head>
@@ -103,7 +103,7 @@
                     <a href="#"><i class="fa fa-flask"></i> <span class="nav-label">小工具</span></a>
                 </li>
                 <li>
-                    <a href="FTPupload.html"><i class="fa fa-exchange"></i> <span class="nav-label">FTP功能</span></a>
+                    <a href="#"><i class="fa fa-exchange"></i> <span class="nav-label">FTP功能</span></a>
                 </li>
                 <li>
                     <a href="#"><i class="fa fa-cog"></i> <span class="nav-label">系统设置</span></a>
@@ -190,93 +190,31 @@
             </nav>
         </div>
         <!--右侧更新日志，及文档内容-->
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h2>Sily 开发文档</h2>
+        <div class="row" style="margin-top: 150px">
+            <div class="col-lg-5 col-lg-offset-3">
+                    <div class="form-group">
+                        <label for="ip-address">IP地址</label>
+                        <input type="email" class="form-control" id="ip-address" placeholder="请输入IP地址：">
                     </div>
-                    <div class="ibox-content">
-                        <p>Sily的v0.3开发文档，如下图所示：</p>
-                        <p>
-                        <h3>此处是二维码</h3>
-                        </p>
-                        <p>开发文档位于项目中的docs目录下。</p>
+                    <div class="form-group">
+                        <label for="user-name">用户名</label>
+                        <input type="password" class="form-control" id="user-name" placeholder="请输入用户名：">
                     </div>
-                </div>
-
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h5>二次开发</h5>
+                    <div class="form-group">
+                        <label for="password">密码</label>
+                        <input type="password" class="form-control" id="password" placeholder="请输入密码：">
                     </div>
-                    <div class="ibox-content">
-                        <p>我们提供基于Sily的二次开发服务，请联系作者。</p>
-                        <ol>
-                            <li>Html页面（CSS+HTML+jQuery）制作</li>
-                        </ol>
+                    <div class="form-group">
+                        <label for="cust-file">文件上传</label>
+                        <input type="file" id="cust-file">
+                        <p class="help-block">请选择你需要上传的文件.</p>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-lg-5">
-                <div class="ibox float-e-margins">
-                    <div class="ibox-title">
-                        <h2>更新日志</h2>
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"> 我已确保文件安全
+                        </label>
                     </div>
-                    <div class="ibox-content no-padding">
-
-                        <div class="panel-body">
-                            <div class="panel-group" id="version">
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h5 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#version"
-                                               href="index.html#v22">v0.3</a><code class="pull-right">2018年1月4日更新</code>
-                                        </h5>
-                                    </div>
-                                    <div id="v22" class="panel-collapse collapse in">
-                                        <div class="panel-body">
-                                            <ol>
-                                                <li>修复一些问题；</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h5 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#version" href="#">v0.2</a>
-                                        </h5>
-                                    </div>
-                                    <div id="v2" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <ol>
-                                                <li>修复一些问题；</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="panel panel-default">
-                                    <div class="panel-heading">
-                                        <h5 class="panel-title">
-                                            <a data-toggle="collapse" data-parent="#version" href="#">v0.1</a>
-                                        </h5>
-                                    </div>
-                                    <div id="v1" class="panel-collapse collapse">
-                                        <div class="panel-body">
-                                            <ol>
-                                                <li>修复一些问题；</li>
-                                            </ol>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                    <button type="submit" class="btn btn-info" id="submit">提交</button>
             </div>
         </div>
         <!--</div>-->
@@ -284,14 +222,13 @@
 </div>
 <script src="../static/js/jquery-3.2.1.min.js"></script>
 <script src="../static/bootstrap-3.3.7-dist/js/bootstrap.js"></script>
-<script src="../static/js/login.js"></script>
 <!--手风琴-->
 
 <script src="https://cdn.bootcss.com/metisMenu/2.7.1/metisMenu.js"></script>
 <!--<script src="../static/js/plugins/metisMenu/jquery.metisMenu.js"></script>-->
 <!--滚动条-->
 <script src="../static/js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
-
 <script src="../static/js/index.js"></script>
+<script src="../static/js/FTPupload.js"></script>
 </body>
 </html>
