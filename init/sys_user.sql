@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50719
 File Encoding         : 65001
 
-Date: 2018-01-16 16:01:04
+Date: 2018-01-17 12:06:52
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -35,7 +35,7 @@ CREATE TABLE `sys_user` (
   `qq` varchar(32) DEFAULT NULL COMMENT 'QQ',
   `birthday` date DEFAULT NULL COMMENT '出生日期',
   `dept_id` bigint(20) DEFAULT NULL COMMENT '部门编号',
-  `position` varchar(64) DEFAULT NULL COMMENT '职位',
+  `iposition` varchar(64) DEFAULT NULL COMMENT '职位',
   `address` varchar(256) DEFAULT NULL COMMENT '详细地址',
   `staff_no` varchar(32) DEFAULT NULL COMMENT '工号',
   `enable` tinyint(1) DEFAULT '1',
