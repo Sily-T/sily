@@ -10,7 +10,7 @@ $().ready(function () {
 
         $.ajax({
             type:"POST",
-            url:"",
+            url:"/util/ftpUpload",
             async:true,
             contentType:"application/json;charset=utf-8",
             data:JSON.stringify(kmConfig),
